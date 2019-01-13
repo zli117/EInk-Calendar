@@ -10,7 +10,6 @@ image = Image.new('1', (640, 384), 255)
 draw = ImageDraw.Draw(image)
 font = ImageFont.truetype('fonts/Inconsolata-Regular.ttf', size=27)
 font_smaller = ImageFont.truetype('fonts/Inconsolata-Regular.ttf', size=14)
-font_weather_text = ImageFont.truetype('fonts/Inconsolata-Regular.ttf', size=14)
 font_weather_big = ImageFont.truetype(
     'fonts/weathericons-regular-webfont.ttf', size=47)
 font_weather_small = ImageFont.truetype(
@@ -38,14 +37,13 @@ calender.set_month('January')
 
 icon_lookup = WeatherIconLookup('fonts/weathericons.xml')
 weather = WeatherWidget(192, 192, font_weather_big, font_weather_small,
-                        font_weather_text, icon_lookup)
+                        font_smaller, icon_lookup)
 weather.is_draw_border(True)
 weather.set_humidity(89.8)
 weather.set_temp_range(-10.1, 12.2)
 weather.set_weather(200)
 weather.set_forecast([(310, -10.1, 11.1)])
 window.add_child(weather)
-
 
 window.abs_col = 0
 window.abs_row = 0

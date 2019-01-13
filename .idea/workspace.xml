@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="90705c5b-ddd5-4252-a081-790e11283ef7" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/controller.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/widgets/weather.py" beforeDir="false" afterPath="$PROJECT_DIR$/widgets/weather.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/widgets/weather_icon_lookup.py" beforeDir="false" afterPath="$PROJECT_DIR$/widgets/weather_icon_lookup.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/widgets/widget_base.py" beforeDir="false" afterPath="$PROJECT_DIR$/widgets/widget_base.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -41,14 +37,14 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="51" />
-          <entry key="py" value="16419" />
+          <entry key="py" value="16510" />
           <entry key="xml" value="268" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="PLAIN_TEXT" value="51" />
-          <entry key="Python" value="16419" />
+          <entry key="Python" value="16510" />
           <entry key="XML" value="268" />
         </counts>
       </usages-collector>
@@ -59,7 +55,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/widgets/widget_base.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
+            <state relative-caret-position="1245">
               <caret line="83" column="62" selection-start-line="83" selection-start-column="62" selection-end-line="83" selection-end-column="62" />
               <folding>
                 <marker date="1547363115633" expanded="true" signature="45:50" ph="..." />
@@ -73,8 +69,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/widgets/weather.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="145">
-              <caret line="59" selection-start-line="59" selection-end-line="59" />
+            <state relative-caret-position="420">
+              <caret line="65" column="36" selection-start-line="65" selection-start-column="36" selection-end-line="65" selection-end-column="36" />
               <folding>
                 <element signature="e#0#25#0" expanded="true" />
                 <marker date="1547364494176" expanded="true" signature="195:1456" ph="..." />
@@ -107,8 +103,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/controller.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="16" column="10" selection-start-line="16" selection-start-column="10" selection-end-line="16" selection-end-column="10" />
+            <state relative-caret-position="585">
+              <caret line="39" column="35" selection-start-line="39" selection-start-column="35" selection-end-line="39" selection-end-column="35" />
               <folding>
                 <element signature="e#0#43#0" expanded="true" />
               </folding>
@@ -183,8 +179,8 @@
         <option value="$PROJECT_DIR$/widgets/widget_base.py" />
         <option value="$PROJECT_DIR$/fonts/weather-icons-master/values/weathericons.xml" />
         <option value="$PROJECT_DIR$/widgets/weather_icon_lookup.py" />
-        <option value="$PROJECT_DIR$/controller.py" />
         <option value="$PROJECT_DIR$/widgets/weather.py" />
+        <option value="$PROJECT_DIR$/controller.py" />
       </list>
     </option>
   </component>
@@ -205,17 +201,6 @@
             <path>
               <item name="EInkUI" type="b2602c69:ProjectViewProjectNode" />
               <item name="EInkUI" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="EInkUI" type="b2602c69:ProjectViewProjectNode" />
-              <item name="EInkUI" type="462c0819:PsiDirectoryNode" />
-              <item name="fonts" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="EInkUI" type="b2602c69:ProjectViewProjectNode" />
-              <item name="EInkUI" type="462c0819:PsiDirectoryNode" />
-              <item name="fonts" type="462c0819:PsiDirectoryNode" />
-              <item name="weather-icons-master" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="EInkUI" type="b2602c69:ProjectViewProjectNode" />
@@ -339,16 +324,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/widgets/calender.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="5" selection-start-column="5" selection-end-column="5" />
-          <folding>
-            <marker date="1547357411670" expanded="true" signature="110:115" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/widgets/weather_icon_lookup.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
@@ -366,19 +341,19 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/controller.py">
+    <entry file="file://$PROJECT_DIR$/widgets/calender.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="10" selection-start-line="16" selection-start-column="10" selection-end-line="16" selection-end-column="10" />
+        <state>
+          <caret column="5" selection-start-column="5" selection-end-column="5" />
           <folding>
-            <element signature="e#0#43#0" expanded="true" />
+            <marker date="1547357411670" expanded="true" signature="110:115" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/widgets/widget_base.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
+        <state relative-caret-position="1245">
           <caret line="83" column="62" selection-start-line="83" selection-start-column="62" selection-end-line="83" selection-end-column="62" />
           <folding>
             <marker date="1547363115633" expanded="true" signature="45:50" ph="..." />
@@ -390,12 +365,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/widgets/weather.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="145">
-          <caret line="59" selection-start-line="59" selection-end-line="59" />
+        <state relative-caret-position="420">
+          <caret line="65" column="36" selection-start-line="65" selection-start-column="36" selection-end-line="65" selection-end-column="36" />
           <folding>
             <element signature="e#0#25#0" expanded="true" />
             <marker date="1547364494176" expanded="true" signature="195:1456" ph="..." />
             <marker date="1547364494176" expanded="true" signature="1489:1494" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controller.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="585">
+          <caret line="39" column="35" selection-start-line="39" selection-start-column="35" selection-end-line="39" selection-end-column="35" />
+          <folding>
+            <element signature="e#0#43#0" expanded="true" />
           </folding>
         </state>
       </provider>
