@@ -1,16 +1,7 @@
-from enum import Enum
-
 from PIL import ImageDraw, ImageFont
 
-from .widget_base import WidgetBase
-
-
-class Alignments(Enum):
-    CENTER = 0
-    LEFT = 1
-    RIGHT = 2
-    TOP = 3
-    BOTTOM = 4
+from widgets.alignments import Alignments
+from widgets.widget_base import WidgetBase
 
 
 class TextWidget(WidgetBase):
@@ -48,7 +39,7 @@ class TextWidget(WidgetBase):
     def draw(self, draw: ImageDraw):
         super().draw(draw)
         font_w, font_h = draw.textsize(self._text, font=self._font)
-        if font_h <= self.height or font_w <= self.width:
+        if font_h <= self.height and font_w <= self.width:
             horizontal_offset = self.abs_col
             if self._horizontal_align == Alignments.CENTER:
                 horizontal_offset += (self.width - font_w) // 2

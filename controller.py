@@ -8,6 +8,8 @@ image = Image.new('1', (640, 384), 255)
 draw = ImageDraw.Draw(image)
 font = ImageFont.truetype('fonts/Inconsolata-Regular.ttf', size=27)
 font_smaller = ImageFont.truetype('fonts/Inconsolata-Regular.ttf', size=17)
+font_weather = ImageFont.truetype(
+    'fonts/weather-icons-master/font/weathericons-regular-webfont.ttf', size=37)
 
 window = PanelWidget(640, 384)
 
@@ -19,6 +21,13 @@ text1.is_draw_border(True)
 text1.background = 0
 text1.foreground = 1
 window.add_child(text1)
+
+text2 = TextWidget(58, 640 - 192, font=font_weather)
+text2.row = 45
+text2.col = 192
+text2.text = '\uf002'
+window.add_child(text2)
+
 
 calender = CalenderWidget(192, 192, font=font_smaller)
 calender.row = 192

@@ -1,5 +1,5 @@
-from .panel import PanelWidget
-from .text import TextWidget
+from widgets.panel import PanelWidget
+from widgets.text import TextWidget
 
 
 class CalenderWidget(PanelWidget):
