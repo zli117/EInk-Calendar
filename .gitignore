@@ -116,3 +116,5 @@ dmypy.json
 
 # Project specific
 text.png
+
+.idea/workspace.xml
