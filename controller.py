@@ -1,7 +1,7 @@
 import datetime
 from view.widgets.window import Window7in5
 
-window = Window7in5('fonts')
+window = Window7in5('resources')
 
 window.calender.set_dates(['%2s' % i for i in range(35)])
 window.calender.is_draw_border(True)

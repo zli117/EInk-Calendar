@@ -53,10 +53,8 @@ class EventWidget(PanelWidget):
                    self.abs_row + self.height - bottom_pad - text_h), date_str,
                   fill=self.background, font=self.font)
         event_max_chars = (self.width - 2 * horizontal_pad) * 4 // 5 // text_w
-        print(event_max_chars, len(self.event))
         if len(self.event) > event_max_chars:
             self.event = self.event[:event_max_chars - 3] + '...'
-        print(self.event)
         draw.text((self.abs_col + (self.width - 2 * horizontal_pad) // 5
                    + horizontal_pad,
                    self.abs_row + self.height - bottom_pad - text_h),

@@ -2,19 +2,28 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="90705c5b-ddd5-4252-a081-790e11283ef7" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/view/widgets/window.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/controller.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/widgets/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/view/widgets/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/widgets/alignments.py" beforeDir="false" afterPath="$PROJECT_DIR$/view/widgets/alignments.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/widgets/calender.py" beforeDir="false" afterPath="$PROJECT_DIR$/view/widgets/calender.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/widgets/event.py" beforeDir="false" afterPath="$PROJECT_DIR$/view/widgets/event.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/widgets/panel.py" beforeDir="false" afterPath="$PROJECT_DIR$/view/widgets/panel.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/widgets/text.py" beforeDir="false" afterPath="$PROJECT_DIR$/view/widgets/text.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/widgets/weather.py" beforeDir="false" afterPath="$PROJECT_DIR$/view/widgets/weather.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/widgets/weather_icon_lookup.py" beforeDir="false" afterPath="$PROJECT_DIR$/view/widgets/weather_icon_lookup.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/widgets/widget_base.py" beforeDir="false" afterPath="$PROJECT_DIR$/view/widgets/widget_base.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fonts/Inconsolata-Bold.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fonts/Inconsolata-Regular.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fonts/Inconsolata.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fonts/PlayfairDisplay-Black.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fonts/PlayfairDisplay-BlackItalic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fonts/PlayfairDisplay-Bold.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fonts/PlayfairDisplay-BoldItalic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fonts/PlayfairDisplay-Italic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fonts/PlayfairDisplay-Regular.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fonts/Playfair_Display.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fonts/Staatliches-Regular.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fonts/weather-icons-master/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fonts/weather-icons-master/.npmignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fonts/weather-icons-master/font/weathericons-regular-webfont.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fonts/weather-icons-master/font/weathericons-regular-webfont.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fonts/weather-icons-master/font/weathericons-regular-webfont.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fonts/weather-icons-master/font/weathericons-regular-webfont.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fonts/weathericons-regular-webfont.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fonts/weathericons.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/widgets/event.py" beforeDir="false" afterPath="$PROJECT_DIR$/view/widgets/event.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/widgets/window.py" beforeDir="false" afterPath="$PROJECT_DIR$/view/widgets/window.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -34,7 +43,7 @@
         <counts>
           <entry key="gitignore" value="1" />
           <entry key="png" value="22" />
-          <entry key="py" value="27" />
+          <entry key="py" value="28" />
           <entry key="pyi" value="1" />
           <entry key="xml" value="3" />
         </counts>
@@ -43,7 +52,7 @@
         <counts>
           <entry key="Image" value="22" />
           <entry key="PLAIN_TEXT" value="1" />
-          <entry key="Python" value="27" />
+          <entry key="Python" value="28" />
           <entry key="PythonStub" value="1" />
           <entry key="XML" value="3" />
         </counts>
@@ -52,14 +61,14 @@
         <counts>
           <entry key="dummy" value="51" />
           <entry key="gitignore" value="30" />
-          <entry key="py" value="25004" />
+          <entry key="py" value="25184" />
           <entry key="xml" value="269" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="PLAIN_TEXT" value="81" />
-          <entry key="Python" value="25004" />
+          <entry key="Python" value="25184" />
           <entry key="XML" value="269" />
         </counts>
       </usages-collector>
@@ -87,10 +96,11 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/view/widgets/window.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="75">
-                  <caret line="5" column="22" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="22" />
+                <state relative-caret-position="300">
+                  <caret line="20" column="47" selection-start-line="20" selection-start-column="47" selection-end-line="20" selection-end-column="47" />
                   <folding>
-                    <marker date="1547411828429" expanded="true" signature="321:326" ph="..." />
+                    <element signature="e#0#9#0" expanded="true" />
+                    <marker date="1547412361227" expanded="true" signature="321:326" ph="..." />
                   </folding>
                 </state>
               </provider>
@@ -128,33 +138,33 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/view/widgets/event.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="300">
-                  <caret line="50" selection-start-line="50" selection-end-line="50" />
+                <state relative-caret-position="405">
+                  <caret line="57" selection-start-line="57" selection-end-line="57" />
                   <folding>
                     <element signature="e#0#15#0" expanded="true" />
-                    <marker date="1547411905545" expanded="true" signature="139:141" ph="..." />
-                    <marker date="1547411905545" expanded="true" signature="172:2524" ph="..." />
-                    <marker date="1547411905545" expanded="true" signature="521:553" ph="..." />
-                    <marker date="1547411905545" expanded="true" signature="660:693" ph="..." />
-                    <marker date="1547411905545" expanded="true" signature="2556:2557" ph="..." />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/controller.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="315">
-                  <caret line="21" column="21" lean-forward="true" selection-start-line="21" selection-start-column="21" selection-end-line="21" selection-end-column="21" />
-                  <folding>
-                    <element signature="e#0#15#0" expanded="true" />
+                    <marker date="1547412383353" expanded="true" signature="139:141" ph="..." />
+                    <marker date="1547412383353" expanded="true" signature="172:2450" ph="..." />
+                    <marker date="1547412383353" expanded="true" signature="521:553" ph="..." />
+                    <marker date="1547412383353" expanded="true" signature="660:693" ph="..." />
+                    <marker date="1547412383353" expanded="true" signature="2482:2483" ph="..." />
                   </folding>
                 </state>
               </provider>
             </entry>
           </file>
           <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/controller.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="45">
+                  <caret line="3" column="29" selection-start-line="3" selection-start-column="29" selection-end-line="3" selection-end-column="29" />
+                  <folding>
+                    <element signature="e#0#15#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/text.png">
               <provider selected="true" editor-type-id="images" />
             </entry>
@@ -192,13 +202,13 @@
         <option value="/mnt/Shared/Programming/Projects/EInkUI/widgets/event.py" />
         <option value="$PROJECT_DIR$/widgets/event.py" />
         <option value="$PROJECT_DIR$/widgets/window.py" />
-        <option value="$PROJECT_DIR$/view/widgets/window.py" />
         <option value="$PROJECT_DIR$/view/widgets/text.py" />
         <option value="$PROJECT_DIR$/view/widgets/panel.py" />
-        <option value="$PROJECT_DIR$/view/widgets/event.py" />
         <option value="$PROJECT_DIR$/view/widgets/calender.py" />
         <option value="$PROJECT_DIR$/view/widgets/weather.py" />
         <option value="$PROJECT_DIR$/controller.py" />
+        <option value="$PROJECT_DIR$/view/widgets/window.py" />
+        <option value="$PROJECT_DIR$/view/widgets/event.py" />
       </list>
     </option>
   </component>
@@ -278,6 +288,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1920" height="1044" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Favorites" side_tool="true" />
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.11913548" />
@@ -435,28 +446,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/view/widgets/event.py">
+    <entry file="file:///mnt/Shared/Programming/Projects/EInkUI/view/widgets/window.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="50" selection-start-line="50" selection-end-line="50" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-            <marker date="1547411905545" expanded="true" signature="139:141" ph="..." />
-            <marker date="1547411905545" expanded="true" signature="172:2524" ph="..." />
-            <marker date="1547411905545" expanded="true" signature="521:553" ph="..." />
-            <marker date="1547411905545" expanded="true" signature="660:693" ph="..." />
-            <marker date="1547411905545" expanded="true" signature="2556:2557" ph="..." />
-          </folding>
+        <state relative-caret-position="150">
+          <caret line="18" selection-start-line="18" selection-end-line="18" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/text.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/controller.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" column="21" lean-forward="true" selection-start-line="21" selection-start-column="21" selection-end-line="21" selection-end-column="21" />
+        <state relative-caret-position="45">
+          <caret line="3" column="29" selection-start-line="3" selection-start-column="29" selection-end-line="3" selection-end-column="29" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
           </folding>
@@ -465,13 +465,32 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/view/widgets/window.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="22" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="22" />
+        <state relative-caret-position="300">
+          <caret line="20" column="47" selection-start-line="20" selection-start-column="47" selection-end-line="20" selection-end-column="47" />
           <folding>
-            <marker date="1547411828429" expanded="true" signature="321:326" ph="..." />
+            <element signature="e#0#9#0" expanded="true" />
+            <marker date="1547412361227" expanded="true" signature="321:326" ph="..." />
           </folding>
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/view/widgets/event.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="57" selection-start-line="57" selection-end-line="57" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+            <marker date="1547412383353" expanded="true" signature="139:141" ph="..." />
+            <marker date="1547412383353" expanded="true" signature="172:2450" ph="..." />
+            <marker date="1547412383353" expanded="true" signature="521:553" ph="..." />
+            <marker date="1547412383353" expanded="true" signature="660:693" ph="..." />
+            <marker date="1547412383353" expanded="true" signature="2482:2483" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/text.png">
+      <provider selected="true" editor-type-id="images" />
     </entry>
   </component>
 </project>

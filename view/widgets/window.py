@@ -16,9 +16,11 @@ class Window7in5:
         font_small = ImageFont.truetype(
             os.path.join(resource_dir, 'Inconsolata-Regular.ttf'), size=14)
         font_weather_large = ImageFont.truetype(
-            'fonts/weathericons-regular-webfont.ttf', size=47)
+            os.path.join(resource_dir, 'weathericons-regular-webfont.ttf'),
+            size=47)
         font_weather_small = ImageFont.truetype(
-            'fonts/weathericons-regular-webfont.ttf', size=27)
+            os.path.join(resource_dir, 'weathericons-regular-webfont.ttf'),
+            size=27)
 
         self.window = PanelWidget(640, 384)
 
