@@ -13,16 +13,5 @@ class WeatherIconLookup:
         # Default N/A
         return self.map.get(name, '\uf07b')
 
-    def look_up_with_owm_main(self, main_class: str):
-        mapping = {
-            'Clear': 'wi-day-sunny',
-            'Clouds': 'wi-cloudy',
-            'Rain': 'wi-rain',
-            'Drizzle': 'wi-rain',
-            'Fog': 'wi-fog',
-            'Mist': 'wi-fog',
-            'Haze': 'wi-fog',
-            'Snow': 'wi-snow',
-            'Thunderstorm': 'wi-thunderstorm'
-        }
-        return self.look_up_with_name(mapping.get(main_class, ''))
+    def look_up_with_owm_id(self, id: int):
+        return self.look_up_with_name('wi_owm_%03d' % id)

@@ -3,13 +3,18 @@ from PIL import ImageFont, ImageDraw, Image
 from widgets.calender import CalenderWidget
 from widgets.panel import PanelWidget
 from widgets.text import TextWidget
+from widgets.weather import WeatherWidget
+from widgets.weather_icon_lookup import WeatherIconLookup
 
 image = Image.new('1', (640, 384), 255)
 draw = ImageDraw.Draw(image)
 font = ImageFont.truetype('fonts/Inconsolata-Regular.ttf', size=27)
-font_smaller = ImageFont.truetype('fonts/Inconsolata-Regular.ttf', size=17)
-font_weather = ImageFont.truetype(
-    'fonts/weather-icons-master/font/weathericons-regular-webfont.ttf', size=37)
+font_smaller = ImageFont.truetype('fonts/Inconsolata-Regular.ttf', size=14)
+font_weather_text = ImageFont.truetype('fonts/Inconsolata-Regular.ttf', size=14)
+font_weather_big = ImageFont.truetype(
+    'fonts/weathericons-regular-webfont.ttf', size=47)
+font_weather_small = ImageFont.truetype(
+    'fonts/weathericons-regular-webfont.ttf', size=27)
 
 window = PanelWidget(640, 384)
 
@@ -22,24 +27,28 @@ text1.background = 0
 text1.foreground = 1
 window.add_child(text1)
 
-text2 = TextWidget(58, 640 - 192, font=font_weather)
-text2.row = 45
-text2.col = 192
-text2.text = '\uf002'
-window.add_child(text2)
-
-
 calender = CalenderWidget(192, 192, font=font_smaller)
 calender.row = 192
 calender.col = 0
 window.add_child(calender)
 
-window.abs_col = 0
-window.abs_row = 0
-
 calender.set_dates(['%2s' % i for i in range(35)])
 calender.is_draw_border(True)
 calender.set_month('January')
+
+icon_lookup = WeatherIconLookup('fonts/weathericons.xml')
+weather = WeatherWidget(192, 192, font_weather_big, font_weather_small,
+                        font_weather_text, icon_lookup)
+weather.is_draw_border(True)
+weather.set_humidity(89.8)
+weather.set_temp_range(-10.1, 12.2)
+weather.set_weather(200)
+weather.set_forecast([(310, -10.1, 11.1)])
+window.add_child(weather)
+
+
+window.abs_col = 0
+window.abs_row = 0
 
 window.draw(draw)
 

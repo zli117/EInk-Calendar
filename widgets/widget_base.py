@@ -11,6 +11,7 @@ class WidgetBase:
         self._abs_col = 0
         self._children = []
         self._draw_border = False
+        self._children_draw_border = False
         self._background = 1
         self._foreground = 0
 
@@ -76,6 +77,11 @@ class WidgetBase:
 
     def is_draw_border(self, draw_border: bool):
         self._draw_border = draw_border
+
+    def is_children_draw_border(self, children_draw_border: bool = False):
+        for child in self._children:
+            child.is_draw_border(children_draw_border)
+            child.is_children_draw_border(children_draw_border)
 
     def draw(self, draw: ImageDraw):
         if self._draw_border:
