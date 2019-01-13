@@ -93,4 +93,4 @@ class WidgetBase:
     def add_child(self, child):
         self._children.append(child)
         child.abs_col = self.abs_col + child.col
-        child.abs_row = self.abs_row = child.row
+        child.abs_row = self.abs_row + child.row
