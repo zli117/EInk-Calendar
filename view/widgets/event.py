@@ -2,8 +2,8 @@ import datetime
 
 from PIL import ImageFont, ImageDraw
 
-from widgets.panel import PanelWidget
-from widgets.text import TextWidget
+from view.widgets.panel import PanelWidget
+from view.widgets.text import TextWidget
 
 
 class EventWidget(PanelWidget):
@@ -51,7 +51,7 @@ class EventWidget(PanelWidget):
         draw.polygon(polygon_pts, fill=self.foreground)
         draw.text((self.abs_col + horizontal_pad,
                    self.abs_row + self.height - bottom_pad - text_h), date_str,
-                  fill=self.background)
+                  fill=self.background, font=self.font)
         event_max_chars = (self.width - 2 * horizontal_pad) * 4 // 5 // text_w
         print(event_max_chars, len(self.event))
         if len(self.event) > event_max_chars:

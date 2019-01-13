@@ -1,8 +1,8 @@
 from PIL import ImageFont
 
-from widgets.panel import PanelWidget
-from widgets.text import TextWidget
-from widgets.weather_icon_lookup import WeatherIconLookup
+from view.widgets.panel import PanelWidget
+from view.widgets.text import TextWidget
+from view.widgets.weather_icon_lookup import WeatherIconLookup
 
 
 class ForecastWidget(PanelWidget):

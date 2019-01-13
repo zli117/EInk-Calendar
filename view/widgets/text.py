@@ -1,7 +1,7 @@
 from PIL import ImageDraw, ImageFont
 
-from widgets.alignments import Alignments
-from widgets.widget_base import WidgetBase
+from view.widgets.alignments import Alignments
+from view.widgets.widget_base import WidgetBase
 
 
 class TextWidget(WidgetBase):

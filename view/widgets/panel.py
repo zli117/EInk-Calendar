@@ -1,6 +1,6 @@
 from PIL import ImageDraw
 
-from widgets.widget_base import WidgetBase
+from view.widgets.widget_base import WidgetBase
 
 
 class PanelWidget(WidgetBase):
