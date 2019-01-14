@@ -34,6 +34,7 @@ class Window7in5:
         self._calender = CalenderWidget(192, 192, font=font_small)
         self._calender.row = 192
         self._calender.col = 0
+        self._calender.is_draw_border(True)
         self.window.add_child(self._calender)
 
         icon_lookup = WeatherIconLookup(
