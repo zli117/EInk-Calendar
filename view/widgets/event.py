@@ -31,7 +31,7 @@ class EventWidget(PanelWidget):
     def draw(self, draw: ImageDraw):
         if not self.show:
             return
-        horizontal_pad = self.width // 20
+        horizontal_pad = self.width // 25
         bottom_pad = self.height // 4
         draw.line((self.abs_col + horizontal_pad,
                    self.abs_row + self.height - bottom_pad,
@@ -43,11 +43,11 @@ class EventWidget(PanelWidget):
                         self.abs_row + self.height - bottom_pad),
                        (self.abs_col + horizontal_pad,
                         self.abs_row + self.height - bottom_pad - text_h),
-                       (self.abs_col + horizontal_pad + text_w * 7,
-                        self.abs_row + self.height - bottom_pad - text_h),
                        (self.abs_col + horizontal_pad + text_w * 8,
+                        self.abs_row + self.height - bottom_pad - text_h),
+                       (self.abs_col + horizontal_pad + text_w * 9,
                         self.abs_row + self.height - bottom_pad))
-        date_str = datetime.datetime.strftime(self.date, '%b %d')
+        date_str = datetime.datetime.strftime(self.date, ' %b %d')
         draw.polygon(polygon_pts, fill=self.foreground)
         draw.text((self.abs_col + horizontal_pad,
                    self.abs_row + self.height - bottom_pad - text_h), date_str,
