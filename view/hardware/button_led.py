@@ -16,7 +16,7 @@ class ButtonAndLed:
             def new_thread():
                 self.controller.update_and_redraw()
 
-            thread = threading.Thread(target=new_thread())
+            thread = threading.Thread(target=new_thread)
             thread.start()
 
         GPIO.add_event_detect(button_gpio, GPIO.FALLING, callback=call_back,
