@@ -11,7 +11,7 @@ class Button:
             self.controller.update_all()
             self.controller.render_and_display()
 
-        GPIO.add_event_detect(button_gpio, GPIO.FALLING, call_back=call_back,
+        GPIO.add_event_detect(button_gpio, GPIO.FALLING, callback=call_back,
                               bouncetime=300)
 
     def exit(self):
