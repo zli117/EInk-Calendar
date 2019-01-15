@@ -2,9 +2,9 @@ from model.calendar import get_calendar_days, get_month_str
 from model.events import GoogleCalendarEvents
 from model.weather import OpenWeatherMapModel
 from utils.config_generator import Configurations, load_or_create_config
+from view.hardware import epd7in5
 from view.window import Window7in5
-
-window = Window7in5('resources')
+import time
 
 
 class Controller:
@@ -15,6 +15,8 @@ class Controller:
             self.events.select_calendar(calendar_id)
         self.weather = OpenWeatherMapModel(config.owm_token, config.city_id)
         self.weather.temperature_unit = config.units
+        self.epd = epd7in5.EPD()
+        self.epd.init()
 
     def update_calendar(self):
         self.window.calender.clear_selection()
@@ -36,17 +38,27 @@ class Controller:
         events = self.events.get_sorted_events()
         self.window.events.set_events(events)
 
+    def update_all(self):
+        self.update_events()
+        self.update_weather()
+        self.update_calendar()
+
     def render(self):
         return self.window.render()
+
+    def run(self):
+        try:
+            while True:
+                self.update_all()
+                image = self.render()
+                self.epd.display(self.epd.get_buffer(image))
+                time.sleep(30)
+
+        except KeyboardInterrupt:
+            self.epd.clear(0xFE)
 
 
 config = load_or_create_config()
 
 controller = Controller(config)
-controller.update_calendar()
-controller.update_weather()
-controller.update_events()
-
-image = controller.render()
-
-image.save("text.png")
+controller.run()
