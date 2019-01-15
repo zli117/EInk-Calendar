@@ -11,8 +11,7 @@ class ButtonAndLed:
         self.led_gpio = led_gpio
 
         def call_back(channel):
-            self.controller.update_all()
-            self.controller.render_and_display()
+            self.controller.update_and_redraw()
 
         GPIO.add_event_detect(button_gpio, GPIO.FALLING, callback=call_back,
                               bouncetime=300)
