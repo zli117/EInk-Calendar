@@ -63,25 +63,6 @@ def load_or_create_config():
             config_str = file.read()
             config.read_string(config_str)
 
-        owm_token = config['API_KEYS']['OWM']
-        google_token = config['API_KEYS']['Google_Token']
-        google_refresh_token = config['API_KEYS']['Google_Refresh_Token']
-        google_client_id = config['API_KEYS']['Google_Client_Id']
-        google_client_secrete = config['API_KEYS']['Google_Client_Secrete']
-        credentials = Credentials(
-            google_token,
-            refresh_token=google_refresh_token,
-            client_id=google_client_id,
-            client_secret=google_client_secrete,
-            token_uri='https://accounts.google.com/o/oauth2/token')
-        city_id = int(config['CONFIG']['City_Id'])
-        units = config['CONFIG']['Units']
-        config_obj = Configurations(units, owm_token, credentials, city_id)
-        selected_calendars = config['CONFIG']['Selected_Calendars']
-        for calendar_id in map(lambda s: s.strip(),
-                               selected_calendars.split(',')):
-            config_obj.add_selected_calendars(calendar_id)
-        return config_obj
     else:
         owm_token = input('Paste in the Open Weather Map Token: \n')
         print('To generate Google API tokens, see the video'
@@ -151,4 +132,23 @@ def load_or_create_config():
         print(('Congratulations, configuration is done. The file has been saved'
                + ' to %s. Later runs should specify the arguments:'
                + ' -c %s') % (abs_path, abs_path))
-        return config
+
+    owm_token = config['API_KEYS']['OWM']
+    google_token = config['API_KEYS']['Google_Token']
+    google_refresh_token = config['API_KEYS']['Google_Refresh_Token']
+    google_client_id = config['API_KEYS']['Google_Client_Id']
+    google_client_secrete = config['API_KEYS']['Google_Client_Secrete']
+    credentials = Credentials(
+        google_token,
+        refresh_token=google_refresh_token,
+        client_id=google_client_id,
+        client_secret=google_client_secrete,
+        token_uri='https://accounts.google.com/o/oauth2/token')
+    city_id = int(config['CONFIG']['City_Id'])
+    units = config['CONFIG']['Units']
+    config_obj = Configurations(units, owm_token, credentials, city_id)
+    selected_calendars = config['CONFIG']['Selected_Calendars']
+    for calendar_id in map(lambda s: s.strip(),
+                           selected_calendars.split(',')):
+        config_obj.add_selected_calendars(calendar_id)
+    return config_obj
