@@ -3,6 +3,7 @@ from model.events import GoogleCalendarEvents
 from model.weather import OpenWeatherMapModel
 from utils.config_generator import Configurations, load_or_create_config
 from view.hardware import epd7in5
+from view.hardware.button import Button
 from view.window import Window7in5
 import time
 
@@ -17,6 +18,7 @@ class Controller:
         self.weather.temperature_unit = config.units
         self.epd = epd7in5.EPD()
         self.epd.init()
+        self.button = Button(self)
 
     def update_calendar(self):
         self.window.calender.clear_selection()
@@ -43,21 +45,22 @@ class Controller:
         self.update_weather()
         self.update_calendar()
 
-    def render(self):
-        return self.window.render()
+    def render_and_display(self):
+        image = self.window.render()
+        self.epd.display(self.epd.get_buffer(image))
 
     def run(self):
         try:
             while True:
                 self.update_all()
-                image = self.render()
-                self.epd.display(self.epd.get_buffer(image))
+                self.render_and_display()
                 time.sleep(1800)
 
         except KeyboardInterrupt:
             print('Clearing')
             self.epd.clear(0xFE)
             self.epd.sleep()
+            self.button.exit()
 
 
 config = load_or_create_config()
