@@ -1,6 +1,7 @@
 import datetime
 
-from pyowm import OWM
+import pyowm
+from pyowm import OWM, exceptions
 
 
 class OpenWeatherMapModel:
@@ -40,9 +41,12 @@ class OpenWeatherMapModel:
         Get the current weather data
         :return: Tuple of weather code, temperature range, and humidity
         """
-        obs = self.owm.weather_at_id(self.city_id)
-        weather = obs.get_weather()
-        return self._parse_weather(weather)
+        try:
+            obs = self.owm.weather_at_id(self.city_id)
+            weather = obs.get_weather()
+            return self._parse_weather(weather)
+        except pyowm.exceptions.api_call_error.APICallTimeoutError:
+            return 0, 0, 0, 0
 
     def get_daily_forecast(self, limit=14, include_today=False):
         """
