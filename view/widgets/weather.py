@@ -102,6 +102,8 @@ class WeatherWidget(PanelWidget):
 
     def set_forecast(self, forecasts: list):
         for i, forecast in enumerate(forecasts):
+            if i >= len(self.forecasts):
+                break
             weather, low, high = forecast
             self.forecasts[i].set_weather(weather)
             self.forecasts[i].set_temp_range(low, high)

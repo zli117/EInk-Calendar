@@ -30,8 +30,9 @@ class OpenWeatherMapModel:
         temperature = weather.get_temperature(unit=self.temperature_unit)
         humidity = weather.get_humidity()
         weather_code = weather.get_weather_code()
-        return (weather_code, temperature.get('temp_min', temperature['min']),
-                temperature.get('temp_max', temperature['max']),
+        return (weather_code,
+                temperature.get('temp_min', temperature.get('min')),
+                temperature.get('temp_max', temperature.get('max')),
                 humidity)
 
     def get_current_weather(self):
