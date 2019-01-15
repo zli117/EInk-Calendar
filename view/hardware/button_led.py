@@ -14,7 +14,7 @@ class ButtonAndLed:
             self.controller.update_and_redraw()
 
         GPIO.add_event_detect(button_gpio, GPIO.FALLING, callback=call_back,
-                              bouncetime=300)
+                              bouncetime=500)
         self.led_off()
 
     def exit(self):
