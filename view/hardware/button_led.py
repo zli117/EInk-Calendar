@@ -18,8 +18,8 @@ class ButtonAndLed:
         self.led_off()
 
     def exit(self):
-        GPIO.cleanup()
         self.led_off()
+        GPIO.cleanup()
 
     def led_on(self):
         GPIO.output(self.led_gpio, GPIO.HIGH)
