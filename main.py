@@ -52,7 +52,7 @@ class Controller:
                 self.update_all()
                 image = self.render()
                 self.epd.display(self.epd.get_buffer(image))
-                time.sleep(30)
+                time.sleep(1800)
 
         except KeyboardInterrupt:
             print('Clearing')
