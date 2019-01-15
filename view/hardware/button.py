@@ -1,10 +1,7 @@
 import RPi.GPIO as GPIO
 
-from main import Controller
-
-
 class Button:
-    def __init__(self, controller: Controller, button_gpio=26):
+    def __init__(self, controller, button_gpio=26):
         self.button_gpio = button_gpio
         self.controller = controller
         GPIO.setmode(GPIO.BCM)
