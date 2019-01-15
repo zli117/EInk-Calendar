@@ -12,7 +12,7 @@ class WidgetBase:
         self._children = []
         self._draw_border = False
         self._children_draw_border = False
-        self._background = 1
+        self._background = 255
         self._foreground = 0
 
     @property

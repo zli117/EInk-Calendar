@@ -55,7 +55,9 @@ class Controller:
                 time.sleep(30)
 
         except KeyboardInterrupt:
+            print('Clearing')
             self.epd.clear(0xFE)
+            self.epd.sleep()
 
 
 config = load_or_create_config()
