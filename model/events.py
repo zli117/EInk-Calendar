@@ -60,6 +60,8 @@ class GoogleCalendarEvents:
                                                 event['start'].get('date'))
                 summary = event['summary']
                 time_parsed = dateutil.parser.parse(start_time)
+                if time_parsed.tzinfo is None:
+                    time_parsed = time_parsed.replace(tzinfo=tzlocal())
                 all_events.append((time_parsed.astimezone(tzlocal()), summary))
         all_events.sort(key=lambda e: e[0])
         if len(all_events) > max_results:
