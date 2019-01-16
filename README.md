@@ -7,7 +7,7 @@ weather, and your events on Google calendar.
 ## Get started
 First you need to get a few components:
  * Raspberry pi (2 or 3 or zero) and SD card
- * EInk display: Waveshare 7.5 inch black and what display
+ * EInk display: Waveshare 7.5 inch black and white display
  * A 7.5 inch photo frame
  
 Then clone this repo and install the dependencies
