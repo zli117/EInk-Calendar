@@ -122,10 +122,8 @@ class EPD:
         epdconfig.spi_writebyte([data])
 
     def wait_until_idle(self):
-        print("e-Paper busy")
         while epdconfig.digital_read(self.busy_pin) == 0:  # 0: idle, 1: busy
             epdconfig.delay_ms(100)
-        print("e-Paper busy release")
 
     def init(self):
         if epdconfig.module_init() != 0:
@@ -171,7 +169,6 @@ class EPD:
         image_monocolor = image.convert('1')
         imwidth, imheight = image_monocolor.size
         pixels = image_monocolor.load()
-        print("imwidth = ", imwidth, "imheight = ", imheight)
         if imwidth == self.width and imheight == self.height:
             for y in range(imheight):
                 for x in range(imwidth):
