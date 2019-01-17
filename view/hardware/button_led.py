@@ -3,7 +3,7 @@ import threading
 
 import RPi.GPIO as GPIO
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger('EInkUI')
 
 
 class ButtonAndLed:

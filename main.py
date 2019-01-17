@@ -10,7 +10,7 @@ from view.hardware.button_led import ButtonAndLed
 from view.window import Window7in5
 
 logging_formatter = logging.Formatter('%(asctime)s %(levelname)s %(message)s')
-root_logger = logging.getLogger()
+root_logger = logging.getLogger('EInkUI')
 
 console_handler = logging.StreamHandler()
 console_handler.setFormatter(logging_formatter)
