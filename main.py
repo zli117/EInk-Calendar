@@ -1,3 +1,6 @@
+import logging
+import time
+
 from model.calendar import get_calendar_days, get_month_str
 from model.events import GoogleCalendarEvents
 from model.weather import OpenWeatherMapModel
@@ -5,7 +8,11 @@ from utils.config_generator import Configurations, load_or_create_config
 from view.hardware import epd7in5
 from view.hardware.button_led import ButtonAndLed
 from view.window import Window7in5
-import time
+
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s %(levelname)s %(message)s',
+    handlers=[logging.StreamHandler()])
 
 
 class Controller:
@@ -64,6 +71,7 @@ class Controller:
         try:
             while True:
                 self.update_and_redraw()
+                logging.info('Periodic update of the screen')
                 time.sleep(3600)
 
         except KeyboardInterrupt:
