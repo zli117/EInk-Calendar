@@ -9,10 +9,12 @@ from view.hardware import epd7in5
 from view.hardware.button_led import ButtonAndLed
 from view.window import Window7in5
 
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s %(levelname)s %(message)s',
-    handlers=[logging.StreamHandler()])
+logging_formatter = logging.Formatter('%(asctime)s %(levelname)s %(message)s')
+root_logger = logging.getLogger()
+
+console_handler = logging.StreamHandler()
+console_handler.setFormatter(logging_formatter)
+root_logger.addHandler(console_handler)
 
 
 class Controller:
