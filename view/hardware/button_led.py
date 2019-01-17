@@ -3,6 +3,8 @@ import threading
 
 import RPi.GPIO as GPIO
 
+logger = logging.getLogger(__name__)
+
 
 class ButtonAndLed:
     def __init__(self, controller, button_gpio=26, led_gpio=21):
@@ -16,7 +18,7 @@ class ButtonAndLed:
         def call_back(channel):
             def new_thread():
                 self.controller.update_and_redraw()
-                logging.info('Periodic update of the screen')
+                logging.info('Update of the screen due to button event')
 
             thread = threading.Thread(target=new_thread)
             thread.start()
