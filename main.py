@@ -75,7 +75,7 @@ class Controller:
                 time.sleep(3600)
 
         except KeyboardInterrupt:
-            print('Clearing')
+            logging.info('Clearing screen on exit')
             self.epd.clear(0xFE)
             self.epd.sleep()
             self.button_and_led.exit()
