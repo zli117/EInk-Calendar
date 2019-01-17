@@ -64,7 +64,7 @@ class Controller:
         try:
             while True:
                 self.update_and_redraw()
-                time.sleep(1800)
+                time.sleep(3600)
 
         except KeyboardInterrupt:
             print('Clearing')
