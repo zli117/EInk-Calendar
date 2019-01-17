@@ -18,7 +18,7 @@ class ButtonAndLed:
         def call_back(channel):
             def new_thread():
                 self.controller.update_and_redraw()
-                logging.info('Update of the screen due to button event')
+                logger.info('Update of the screen due to button event')
 
             thread = threading.Thread(target=new_thread)
             thread.start()
