@@ -30,6 +30,7 @@ class Controller:
         self.epd.init()
         self.button_and_led = ButtonAndLed(self)
         self.updating_flag = False
+        self.hour_counter = 0
 
     def update_calendar(self):
         self.window.calender.clear_selection()
@@ -73,9 +74,13 @@ class Controller:
     def run(self):
         try:
             while True:
+                if self.hour_counter == 24:
+                    self.hour_counter = 0
+                    self.epd.clear(0xFE)
                 self.update_and_redraw()
                 logger.info('Periodic update of the screen')
                 time.sleep(3600)
+                self.hour_counter += 1
 
         except KeyboardInterrupt:
             logger.info('Clearing screen on exit')
