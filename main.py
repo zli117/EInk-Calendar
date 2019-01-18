@@ -15,6 +15,7 @@ logger = logging.getLogger('EInkUI')
 console_handler = logging.StreamHandler()
 console_handler.setFormatter(logging_formatter)
 logger.addHandler(console_handler)
+logger.setLevel(logging.INFO)
 
 
 class Controller:
@@ -77,7 +78,7 @@ class Controller:
                 time.sleep(3600)
 
         except KeyboardInterrupt:
-            logging.info('Clearing screen on exit')
+            logger.info('Clearing screen on exit')
             self.epd.clear(0xFE)
             self.epd.sleep()
             self.button_and_led.exit()
