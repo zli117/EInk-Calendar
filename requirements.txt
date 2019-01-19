@@ -5,3 +5,4 @@ python-dateutil==2.7.5
 RPi.GPIO==0.6.5
 spidev==3.2
 python-dateutil==2.7.5
+Pillow==5.4.1
