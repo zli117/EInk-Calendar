@@ -16,17 +16,17 @@ class ForecastWidget(PanelWidget):
         self.weather_icon.text = icon_lookup.look_up_with_name('wi-na')
         self.add_child(self.weather_icon)
 
-        self.low_temp_text = TextWidget(height // 4, width, font=text_font)
-        self.low_temp_text.row = height // 2
-        self.low_temp_text.col = 0
-        self.low_temp_text.text = '--'
-        self.add_child(self.low_temp_text)
-
         self.high_temp_text = TextWidget(height // 4, width, font=text_font)
-        self.high_temp_text.row = height // 4 * 3
+        self.high_temp_text.row = height // 2
         self.high_temp_text.col = 0
         self.high_temp_text.text = '--'
         self.add_child(self.high_temp_text)
+
+        self.low_temp_text = TextWidget(height // 4, width, font=text_font)
+        self.low_temp_text.row = height // 4 * 3
+        self.low_temp_text.col = 0
+        self.low_temp_text.text = '--'
+        self.add_child(self.low_temp_text)
 
         self.icon_lookup = icon_lookup
 
