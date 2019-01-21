@@ -97,7 +97,7 @@ VCM_DC_SETTING = 0x82
 
 
 class EPD:
-    def __init__(self):
+    def __init__(self, config):
         self.reset_pin = epdconfig.RST_PIN
         self.dc_pin = epdconfig.DC_PIN
         self.busy_pin = epdconfig.BUSY_PIN
