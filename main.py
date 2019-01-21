@@ -6,7 +6,7 @@ from model.events import GoogleCalendarEvents
 from model.weather import OpenWeatherMapModel
 from utils.config_generator import Configurations, load_or_create_config
 from view.hardware import epd7in5
-from view.hardware.button_led import ButtonAndLed
+from view.hardware.button_and_led import ButtonAndLed
 from view.window import Window7in5
 
 logging_formatter = logging.Formatter('%(asctime)s %(levelname)s %(message)s')
