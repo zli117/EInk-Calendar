@@ -31,9 +31,9 @@ class Controller:
         if config.is_debug:
             from view.hardware.mock import EPD, ButtonAndLed
         else:
-            EPD = __import__('view.hardware.epd7in5', fromlist=['EPD'])
+            EPD = __import__('view.hardware.epd7in5', fromlist=['EPD']).EPD
             ButtonAndLed = __import__('view.hardware.button_and_led',
-                                      fromlist=['ButtonAndLed'])
+                                      fromlist=['ButtonAndLed']).ButtonAndLed
         self.epd = EPD(config)
         self.button_and_led = ButtonAndLed(self)
 
