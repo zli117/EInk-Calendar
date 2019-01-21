@@ -5,8 +5,6 @@ from model.calendar import get_calendar_days, get_month_str
 from model.events import GoogleCalendarEvents
 from model.weather import OpenWeatherMapModel
 from utils.config_generator import Configurations, load_or_create_config
-from view.hardware import epd7in5
-from view.hardware.button_and_led import ButtonAndLed
 from view.window import Window7in5
 
 logging_formatter = logging.Formatter('%(asctime)s %(levelname)s %(message)s')
@@ -21,16 +19,25 @@ logger.setLevel(logging.INFO)
 class Controller:
     def __init__(self, config: Configurations):
         self.window = Window7in5('resources')
-        self.events = GoogleCalendarEvents(config.google_credential)
+        self.events = GoogleCalendarEvents(config.google_credentials)
 
         for calendar_id in config.selected_calendars:
             self.events.select_calendar(calendar_id)
 
         self.weather = OpenWeatherMapModel(config.owm_token, config.city_id)
         self.weather.temperature_unit = config.units
-        self.epd = epd7in5.EPD()
-        self.epd.init()
+
+        # Avoid importing non existing package (RPi.GPIO etc.)
+        if config.is_debug:
+            from view.hardware.mock import EPD, ButtonAndLed
+        else:
+            EPD = __import__('view.hardware.epd7in5', fromlist=['EPD'])
+            ButtonAndLed = __import__('view.hardware.button_and_led',
+                                      fromlist=['ButtonAndLed'])
+        self.epd = EPD(config)
         self.button_and_led = ButtonAndLed(self)
+
+        self.epd.init()
         self.updating_flag = False
         self.hour_counter = 0
 
@@ -61,7 +68,9 @@ class Controller:
 
     def _render_and_display(self):
         image = self.window.render()
+        self.epd.init()
         self.epd.display(self.epd.get_buffer(image))
+        self.epd.sleep()
 
     def update_and_redraw(self):
         if self.updating_flag:
@@ -87,6 +96,7 @@ class Controller:
 
         except KeyboardInterrupt:
             logger.info('Clearing screen on exit')
+            self.epd.init()
             self.epd.clear(0xFE)
             self.epd.sleep()
             self.button_and_led.exit()
