@@ -95,7 +95,7 @@ class WeatherWidget(PanelWidget):
         self.weather_icon.text = unicode
 
     def set_temp_range(self, low: float, high: float):
-        self.temperature_text.text = '%.02f\n%.02f' % (low, high)
+        self.temperature_text.text = '%.02f\n%.02f' % (high, low)
 
     def set_humidity(self, humidity: float):
         self.humidity_text.text = '%.02f' % humidity
