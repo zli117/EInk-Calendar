@@ -22,8 +22,10 @@ class Controller:
     def __init__(self, config: Configurations):
         self.window = Window7in5('resources')
         self.events = GoogleCalendarEvents(config.google_credential)
+
         for calendar_id in config.selected_calendars:
             self.events.select_calendar(calendar_id)
+
         self.weather = OpenWeatherMapModel(config.owm_token, config.city_id)
         self.weather.temperature_unit = config.units
         self.epd = epd7in5.EPD()
@@ -64,6 +66,7 @@ class Controller:
     def update_and_redraw(self):
         if self.updating_flag:
             return
+
         self.updating_flag = True
         self.button_and_led.led_on()
         self._update_all()
