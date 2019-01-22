@@ -7,7 +7,7 @@ weather, and your events on Google calendar.
 ## Get started
 First you need to get a few components:
  * Raspberry pi (2 or 3 or zero) and SD card
- * EInk display: Waveshare 7.5 inch black and white display
+ * EInk display: [Waveshare 7.5 inch black and white display](https://www.waveshare.com/7.5inch-e-paper-hat.htm)
  * A 7.5 inch photo frame
  
 Then clone this repo and install the dependencies
@@ -27,7 +27,14 @@ Third, you need to get the credentials for Open Weather Map and Google calendar
    * We will need the client ID, client secrete, refresh token and access token
    
 Then hook up the wires as following:
-![diagram|1383x1392, 20%](https://raw.githubusercontent.com/Zonglin-Li6565/EInk-Calendar/master/diagram.png)
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+<img src="https://raw.githubusercontent.com/Zonglin-Li6565/EInk-Calendar/master/diagram.png" width="600" class="center">
    
 Once you have got all the credentials and hooked up the wires, you can run 
 `main.py` without any parameter to create the config file:
