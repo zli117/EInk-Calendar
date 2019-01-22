@@ -28,12 +28,6 @@ Third, you need to get the credentials for Open Weather Map and Google calendar
    
 Then hook up the wires as following:
 
-.center {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 50%;
-}
 <img src="https://raw.githubusercontent.com/Zonglin-Li6565/EInk-Calendar/master/diagram.png" width="600" class="center">
    
 Once you have got all the credentials and hooked up the wires, you can run 
