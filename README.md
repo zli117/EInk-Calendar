@@ -29,6 +29,10 @@ Also make sure you have at least Python 3.5 installed
 ### Then hook up the wires as following:
 
 <img src="https://raw.githubusercontent.com/Zonglin-Li6565/EInk-Calendar/master/diagram.png" width="600" class="center">
+
+Or download [diagram.fzz](https://github.com/Zonglin-Li6565/EInk-Calendar/blob/master/diagram.fzz). Note that the labeling on 
+the breadboard corresponds to the wires on the hat comes with the screen. The wiring is the same as on page 12 of the 
+[official documentation](https://www.waveshare.com/w/upload/7/74/7.5inch-e-paper-hat-user-manual-en.pdf)
    
 ### Once you have got all the credentials and hooked up the wires, you can run 
 `main.py` without any parameter to create the config file:
