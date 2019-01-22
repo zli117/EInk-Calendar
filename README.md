@@ -26,7 +26,8 @@ Third, you need to get the credentials for Open Weather Map and Google calendar
      `https://www.googleapis.com/auth/calendar.readonly`
    * We will need the client ID, client secrete, refresh token and access token
    
-Then hook up the wires as follows:
+Then hook up the wires as following:
+![diagram|1383x1392, 20%](https://raw.githubusercontent.com/Zonglin-Li6565/EInk-Calendar/master/diagram.png)
    
 Once you have got all the credentials and hooked up the wires, you can run 
 `main.py` without any parameter to create the config file:
