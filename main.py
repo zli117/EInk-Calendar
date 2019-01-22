@@ -37,7 +37,6 @@ class Controller:
         self.epd = EPD(config)
         self.button_and_led = ButtonAndLed(self)
 
-        self.epd.init()
         self.updating_flag = False
         self.hour_counter = 0
 
@@ -88,6 +87,7 @@ class Controller:
             while True:
                 if self.hour_counter == 24:
                     self.hour_counter = 0
+                    self.epd.init()
                     self.epd.clear(0xFE)
                 self.update_and_redraw()
                 logger.info('Periodic update of the screen')
