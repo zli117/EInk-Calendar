@@ -59,7 +59,6 @@ class OpenWeatherMapModel:
         weathers = forecaster.get_forecast().get_weathers()
         today = datetime.datetime.now().date()
         if not include_today:
-            weathers = filter(lambda weather: not (
-                    weather.get_reference_time(timeformat='date') == today),
-                              weathers)
+            weathers = filter(lambda weather: not (weather.get_reference_time(
+                timeformat='date').date() == today), weathers)
         return list(map(lambda weather: self._parse_weather(weather), weathers))
