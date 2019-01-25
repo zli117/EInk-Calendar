@@ -7,7 +7,7 @@ manual update with a press of button.
 
 ## Get started
 ### First you need to get a few components:
- * Raspberry pi (2 or 3 or zero) and SD card
+ * Raspberry pi (2 or 3 or zero) and SD card (with OS installed)
  * EInk display: [Waveshare 7.5 inch black and white display](https://www.waveshare.com/7.5inch-e-paper-hat.htm)
  * A 7.5 inch photo frame
  * A pushbutton 
