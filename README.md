@@ -10,6 +10,10 @@ manual update with a press of button.
  * Raspberry pi (2 or 3 or zero) and SD card
  * EInk display: [Waveshare 7.5 inch black and white display](https://www.waveshare.com/7.5inch-e-paper-hat.htm)
  * A 7.5 inch photo frame
+ * A pushbutton 
+ * An LED
+ * 330 Ohm resistor
+ * Breadboard
  
 ### Then clone this repo and install the dependencies
 ```bash
