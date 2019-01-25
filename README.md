@@ -2,7 +2,8 @@
 
 ## What does it do?
 It's a raspberry pi based smart calendar that can tell you the current date, 
-weather, and your events on Google calendar.
+weather, and your events on Google calendar. Updates once per hour. Also supports
+manual update with a button
 
 ## Get started
 ### First you need to get a few components:
