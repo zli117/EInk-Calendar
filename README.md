@@ -2,21 +2,26 @@
 
 ## What does it do?
 It's a raspberry pi based smart calendar that can tell you the current date, 
-weather, and your events on Google calendar.
+weather, and your events on Google calendar. Updates once per hour. Also supports
+manual update with a press of button.
 
 ## Get started
-First you need to get a few components:
- * Raspberry pi (2 or 3 or zero) and SD card
+### First you need to get a few components:
+ * Raspberry pi (2 or 3 or zero) and SD card (with OS installed)
  * EInk display: [Waveshare 7.5 inch black and white display](https://www.waveshare.com/7.5inch-e-paper-hat.htm)
  * A 7.5 inch photo frame
+ * A pushbutton 
+ * An LED
+ * 330 Ohm resistor
+ * Breadboard
  
-Then clone this repo and install the dependencies
+### Then clone this repo and install the dependencies
 ```bash
 pip install -r requirements.txt
 ```
 Also make sure you have at least Python 3.5 installed
 
-Third, you need to get the credentials for Open Weather Map and Google calendar
+### Third, you need to get the credentials for Open Weather Map and Google calendar
  * OWM API key:
    * Go to the Weather API page: [link](https://openweathermap.org/api)
    * Subscribe to *5 day / 3 hour forecast*
@@ -26,11 +31,15 @@ Third, you need to get the credentials for Open Weather Map and Google calendar
      `https://www.googleapis.com/auth/calendar.readonly`
    * We will need the client ID, client secrete, refresh token and access token
    
-Then hook up the wires as following:
+### Then hook up the wires as following:
 
 <img src="https://raw.githubusercontent.com/Zonglin-Li6565/EInk-Calendar/master/diagram.png" width="600" class="center">
+
+Or download [diagram.fzz](https://github.com/Zonglin-Li6565/EInk-Calendar/blob/master/diagram.fzz). Note that the labeling on 
+the breadboard corresponds to the wires on the hat comes with the screen. The wiring is the same as on page 12 of the 
+[official documentation](https://www.waveshare.com/w/upload/7/74/7.5inch-e-paper-hat-user-manual-en.pdf)
    
-Once you have got all the credentials and hooked up the wires, you can run 
+### Once you have got all the credentials and hooked up the wires, you can run 
 `main.py` without any parameter to create the config file:
 ```bash
 python3 main.py
