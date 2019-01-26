@@ -1,5 +1,7 @@
 # EInk Smart Calendar
 
+<img src="https://raw.githubusercontent.com/zli117/EInk-Calendar/master/image.jpg" width="600">
+
 ## What does it do?
 It's a raspberry pi based smart calendar that can tell you the current date, 
 weather, and your events on Google calendar. Updates once per hour. Also supports
@@ -33,9 +35,9 @@ Also make sure you have at least Python 3.5 installed
    
 ### Then hook up the wires as following:
 
-<img src="https://raw.githubusercontent.com/Zonglin-Li6565/EInk-Calendar/master/diagram.png" width="600" class="center">
+<img src="https://raw.githubusercontent.com/zli117/EInk-Calendar/master/diagram.png" width="600">
 
-Or download [diagram.fzz](https://github.com/Zonglin-Li6565/EInk-Calendar/blob/master/diagram.fzz). Note that the labeling on 
+Or download [diagram.fzz](https://github.com/zli117/EInk-Calendar/blob/master/diagram.fzz). Note that the labeling on 
 the breadboard corresponds to the wires on the hat comes with the screen. The wiring is the same as on page 12 of the 
 [official documentation](https://www.waveshare.com/w/upload/7/74/7.5inch-e-paper-hat-user-manual-en.pdf)
    
