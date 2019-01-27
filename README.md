@@ -21,7 +21,7 @@ manual update with a press of button.
 ```bash
 pip install -r requirements.txt
 ```
-Also make sure you have at least Python 3.5 installed
+Also make sure you have at least Python 3.5 installed.
 
 ### Third, you need to get the credentials for Open Weather Map and Google calendar
  * OWM API key:
