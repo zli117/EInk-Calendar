@@ -34,26 +34,29 @@ class OpenWeatherMapModel:
         return (weather_code,
                 temperature.get('temp_min', temperature.get('min')),
                 temperature.get('temp_max', temperature.get('max')),
+                temperature.get('temp'),
                 humidity)
 
     def get_current_weather(self):
         """
         Get the current weather data
-        :return: Tuple of weather code, temperature range, and humidity
+        :return: Tuple of weather code, temperature range, current temperature
+                 and humidity
         """
         try:
             obs = self.owm.weather_at_id(self.city_id)
             weather = obs.get_weather()
             return self._parse_weather(weather)
         except pyowm.exceptions.api_call_error.APICallTimeoutError:
-            return 0, 0, 0, 0
+            return 0, 0, 0, 0, 0
 
     def get_daily_forecast(self, limit=14, include_today=False):
         """
         Get a list of forecasts
         :param limit: The max number of forecasts to get
         :param include_today: whether include today in the forecast
-        :return: list of tuples of weather code, temperature range and humidity
+        :return: list of tuples of weather code, temperature range, temperature
+                 and humidity
         """
         forecaster = self.owm.daily_forecast_at_id(self.city_id, limit=limit)
         weathers = forecaster.get_forecast().get_weathers()

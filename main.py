@@ -48,12 +48,12 @@ class Controller:
         self.window.calender.set_select_date(selection[0], selection[1], True)
 
     def update_weather(self):
-        weather_id, low, high, humidity = self.weather.get_current_weather()
+        weather_id, _, _, temp, humidity = self.weather.get_current_weather()
         self.window.weather.set_weather(weather_id)
-        self.window.weather.set_temp_range(low, high)
+        self.window.weather.set_curr_temp(temp)
         self.window.weather.set_humidity(humidity)
         forecasts = self.weather.get_daily_forecast()
-        forecasts = list(map(lambda forecast: forecast[:-1], forecasts))
+        forecasts = list(map(lambda forecast: forecast[:-2], forecasts))
         self.window.weather.set_forecast(forecasts)
 
     def update_events(self):

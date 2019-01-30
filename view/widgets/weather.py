@@ -94,8 +94,8 @@ class WeatherWidget(PanelWidget):
         unicode = self.icon_lookup.look_up_with_owm_id(id)
         self.weather_icon.text = unicode
 
-    def set_temp_range(self, low: float, high: float):
-        self.temperature_text.text = '%.02f\n%.02f' % (high, low)
+    def set_curr_temp(self, temp: float):
+        self.temperature_text.text = '%.02f' % temp
 
     def set_humidity(self, humidity: float):
         self.humidity_text.text = '%.02f' % humidity
