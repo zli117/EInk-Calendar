@@ -45,6 +45,7 @@ class GoogleCalendarEvents:
         :param max_results: Max amount of events to return
         :return: List of pairs. Each pair contains date of the event and text
         """
+        # TODO: Handle read timeout
         all_events = []
         # 'Z' indicates UTC time
         now = datetime.datetime.utcnow().isoformat() + 'Z'
