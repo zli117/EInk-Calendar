@@ -13,6 +13,7 @@ class GoogleCalendarEvents:
         self._selected_calendars = []
         self._available_calendars = [calendar[0] for calendar in
                                      self.list_calendars()]
+        self._all_events = []
 
     @property
     def credentials(self):
@@ -32,11 +33,14 @@ class GoogleCalendarEvents:
         :param max_result:
         :return: List of pairs. Each pair contains id and summary
         """
-        calendar_results = self._service.calendarList().list(
-            maxResults=max_result).execute()
-        calendars = calendar_results.get('items', [])
-        self._available_calendars = [(calendar['id'], calendar['summary']) for
-                                     calendar in calendars]
+        try:
+            calendar_results = self._service.calendarList().list(
+                maxResults=max_result).execute()
+            calendars = calendar_results.get('items', [])
+            self._available_calendars = [(calendar['id'], calendar['summary'])
+                                         for calendar in calendars]
+        except Exception as exception:
+            print(exception)
         return self._available_calendars
 
     def get_sorted_events(self, max_results=10):
@@ -48,23 +52,29 @@ class GoogleCalendarEvents:
         # TODO: Handle read timeout
         all_events = []
         # 'Z' indicates UTC time
-        now = datetime.datetime.utcnow().isoformat() + 'Z'
-        for calendar_id in self._selected_calendars:
-            events = self._service.events().list(calendarId=calendar_id,
-                                                 timeMin=now,
-                                                 maxResults=max_results,
-                                                 singleEvents=True,
-                                                 orderBy='startTime').execute()
-            events = events.get('items', [])
-            for event in events:
-                start_time = event['start'].get('dateTime',
-                                                event['start'].get('date'))
-                summary = event['summary']
-                time_parsed = dateutil.parser.parse(start_time)
-                if time_parsed.tzinfo is None:
-                    time_parsed = time_parsed.replace(tzinfo=tzlocal())
-                all_events.append((time_parsed.astimezone(tzlocal()), summary))
-        all_events.sort(key=lambda e: e[0])
-        if len(all_events) > max_results:
-            all_events = all_events[:max_results]
-        return all_events
+        try:
+            now = datetime.datetime.utcnow().isoformat() + 'Z'
+            for calendar_id in self._selected_calendars:
+                events = self._service.events().list(
+                    calendarId=calendar_id,
+                    timeMin=now,
+                    maxResults=max_results,
+                    singleEvents=True,
+                    orderBy='startTime').execute()
+                events = events.get('items', [])
+                for event in events:
+                    start_time = event['start'].get('dateTime',
+                                                    event['start'].get('date'))
+                    summary = event['summary']
+                    time_parsed = dateutil.parser.parse(start_time)
+                    if time_parsed.tzinfo is None:
+                        time_parsed = time_parsed.replace(tzinfo=tzlocal())
+                    all_events.append(
+                        (time_parsed.astimezone(tzlocal()), summary))
+            all_events.sort(key=lambda e: e[0])
+            if len(all_events) > max_results:
+                all_events = all_events[:max_results]
+            self._all_events = all_events
+        except Exception as exception:
+            print(exception)
+        return self._all_events
