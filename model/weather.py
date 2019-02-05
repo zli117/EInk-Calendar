@@ -1,7 +1,6 @@
 import datetime
 
-import pyowm
-from pyowm import OWM, exceptions
+from pyowm import OWM
 
 
 class OpenWeatherMapModel:
@@ -9,6 +8,8 @@ class OpenWeatherMapModel:
         self.owm = OWM(api_key)
         self._city_id = city_id
         self._unit = 'celsius'
+        self._current_weather = (0, 0, 0, 0, 0)
+        self._forecast = []
 
     @property
     def city_id(self):
@@ -46,9 +47,10 @@ class OpenWeatherMapModel:
         try:
             obs = self.owm.weather_at_id(self.city_id)
             weather = obs.get_weather()
-            return self._parse_weather(weather)
-        except pyowm.exceptions.api_call_error.APICallTimeoutError:
-            return 0, 0, 0, 0, 0
+            self._current_weather = self._parse_weather(weather)
+        except Exception as exception:
+            print(exception)
+        return self._current_weather
 
     def get_daily_forecast(self, limit=14, include_today=False):
         """
@@ -58,10 +60,17 @@ class OpenWeatherMapModel:
         :return: list of tuples of weather code, temperature range, temperature
                  and humidity
         """
-        forecaster = self.owm.daily_forecast_at_id(self.city_id, limit=limit)
-        weathers = forecaster.get_forecast().get_weathers()
-        today = datetime.datetime.now().date()
-        if not include_today:
-            weathers = filter(lambda weather: not (weather.get_reference_time(
-                timeformat='date').date() == today), weathers)
-        return list(map(lambda weather: self._parse_weather(weather), weathers))
+        try:
+            forecaster = self.owm.daily_forecast_at_id(self.city_id,
+                                                       limit=limit)
+            weathers = forecaster.get_forecast().get_weathers()
+            today = datetime.datetime.now().date()
+            if not include_today:
+                weathers = filter(
+                    lambda weather: not (weather.get_reference_time(
+                        timeformat='date').date() == today), weathers)
+            self._forecast = list(
+                map(lambda weather: self._parse_weather(weather), weathers))
+        except Exception as exception:
+            print(exception)
+        return self._forecast
