@@ -46,7 +46,7 @@ the breadboard corresponds to the wires on the hat comes with the screen. The wi
 ```bash
 python3 main.py
 ```
-and follow the interact guide to create the config file.
+and follow the interactive guide to create the config file.
 
 You can specify the config file for later runs as:
 ```bash
