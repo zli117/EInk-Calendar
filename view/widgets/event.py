@@ -5,6 +5,8 @@ from PIL import ImageFont, ImageDraw
 from view.widgets.panel import PanelWidget
 from view.widgets.text import TextWidget
 
+WEEK_DAYS = ['Mon', 'Tue', 'Wed', 'Thr', 'Fri', 'Sat', 'Sun']
+
 
 class EventWidget(PanelWidget):
     def __init__(self, height: int, width: int, event_font: ImageFont):
@@ -39,26 +41,33 @@ class EventWidget(PanelWidget):
                    self.abs_row + self.height - bottom_pad),
                   fill=self.foreground)
         text_w, text_h = self.font.getsize(' ')
+        # How many character's size the tab will take
+        tab_width_char = 14
         polygon_pts = ((self.abs_col + horizontal_pad,
                         self.abs_row + self.height - bottom_pad),
                        (self.abs_col + horizontal_pad,
                         self.abs_row + self.height - bottom_pad - text_h),
-                       (self.abs_col + horizontal_pad + text_w * 8,
+                       (self.abs_col + horizontal_pad +
+                        text_w * (tab_width_char - 1),
                         self.abs_row + self.height - bottom_pad - text_h),
-                       (self.abs_col + horizontal_pad + text_w * 9,
+                       (self.abs_col + horizontal_pad + text_w * tab_width_char,
                         self.abs_row + self.height - bottom_pad))
-        date_str = datetime.datetime.strftime(self.date, ' %b %d')
+        week_day_str = WEEK_DAYS[self.date.weekday()]
+        date_str = '%s, %s' % (
+            datetime.datetime.strftime(self.date, ' %b %d'), week_day_str)
         draw.polygon(polygon_pts, fill=self.foreground)
         draw.text((self.abs_col + horizontal_pad,
                    self.abs_row + self.height - bottom_pad - text_h), date_str,
                   fill=self.background, font=self.font)
-        event_max_chars = (self.width - 2 * horizontal_pad) * 4 // 5 // text_w
+        # We save three char's space between tab and event text
+        event_max_chars = ((self.width - 2 * horizontal_pad) // text_w
+                           - tab_width_char - 3)
         if len(self.event) > event_max_chars:
             self.event = self.event[:event_max_chars - 3] + '...'
-        draw.text((self.abs_col + (self.width - 2 * horizontal_pad) // 5
-                   + horizontal_pad,
-                   self.abs_row + self.height - bottom_pad - text_h),
-                  self.event, fill=self.foreground, font=self.font)
+        draw.text(
+            (self.abs_col + text_w * (tab_width_char + 3) + horizontal_pad,
+             self.abs_row + self.height - bottom_pad - text_h),
+            self.event, fill=self.foreground, font=self.font)
 
 
 class EventsWidget(PanelWidget):
