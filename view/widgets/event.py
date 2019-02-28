@@ -1,6 +1,6 @@
 import datetime
 
-from PIL import ImageFont, ImageDraw
+from PIL import ImageDraw, ImageFont
 
 from view.widgets.panel import PanelWidget
 from view.widgets.text import TextWidget
@@ -31,6 +31,7 @@ class EventWidget(PanelWidget):
         self.event = event
 
     def draw(self, draw: ImageDraw):
+        super().draw(draw)
         if not self.show:
             return
         horizontal_pad = self.width // 25
