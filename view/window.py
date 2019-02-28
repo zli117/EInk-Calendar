@@ -24,23 +24,28 @@ class Window7in5:
 
         self.window = PanelWidget(640, 384)
 
-        self._events = EventsWidget(384, 640 - 192,
+        calendar_size = 28 * 7
+        weather_height = 384 - calendar_size
+
+        self._events = EventsWidget(384, 640 - calendar_size,
                                     header_font=font_large,
                                     event_font=font_small)
         self._events.row = 0
-        self._events.col = 192
+        self._events.col = calendar_size
         self.window.add_child(self._events)
 
-        self._calender = CalendarWidget(192, 192, font=font_small)
-        self._calender.row = 192
+        self._calender = CalendarWidget(calendar_size, calendar_size,
+                                        font=font_small)
+        self._calender.row = weather_height
         self._calender.col = 0
         self._calender.is_draw_border(True)
         self.window.add_child(self._calender)
 
         icon_lookup = WeatherIconLookup(
             os.path.join(resource_dir, 'weathericons.xml'))
-        self._weather = WeatherWidget(192, 192, font_weather_large,
-                                      font_weather_small,
+
+        self._weather = WeatherWidget(weather_height, calendar_size,
+                                      font_weather_large, font_weather_small,
                                       font_small, icon_lookup)
         self._weather.is_draw_border(True)
         self.window.add_child(self._weather)
