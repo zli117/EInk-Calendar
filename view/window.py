@@ -2,7 +2,7 @@ import os
 
 from PIL import Image, ImageDraw, ImageFont
 
-from view.widgets.calender import CalenderWidget
+from view.widgets.calendar import CalendarWidget
 from view.widgets.event import EventsWidget
 from view.widgets.panel import PanelWidget
 from view.widgets.weather import WeatherWidget
@@ -31,7 +31,7 @@ class Window7in5:
         self._events.col = 192
         self.window.add_child(self._events)
 
-        self._calender = CalenderWidget(192, 192, font=font_small)
+        self._calender = CalendarWidget(192, 192, font=font_small)
         self._calender.row = 192
         self._calender.col = 0
         self._calender.is_draw_border(True)
