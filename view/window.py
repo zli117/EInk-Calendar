@@ -1,6 +1,6 @@
 import os
 
-from PIL import ImageFont, ImageDraw, Image
+from PIL import Image, ImageDraw, ImageFont
 
 from view.widgets.calender import CalenderWidget
 from view.widgets.event import EventsWidget
@@ -65,3 +65,7 @@ class Window7in5:
     @property
     def weather(self):
         return self._weather
+
+    def show_widget_border(self, show_border: bool):
+        self.window.is_draw_border(show_border)
+        self.window.is_children_draw_border(show_border)

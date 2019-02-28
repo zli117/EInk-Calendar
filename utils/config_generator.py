@@ -31,6 +31,7 @@ class Configurations:
             self._selected_calendars.append(calendar_id)
 
         self._debug_save_path = ''
+        self._show_borders = False
 
     @property
     def units(self):
@@ -113,6 +114,14 @@ class Configurations:
     def debug_save_path(self, path):
         self._debug_save_path = path
 
+    @property
+    def show_borders(self):
+        return self._show_borders
+
+    @show_borders.setter
+    def show_borders(self, show_borders):
+        self._show_borders = show_borders
+
     def add_selected_calendars(self, calendar_id: str):
         self._selected_calendars.append(calendar_id)
 
@@ -143,6 +152,8 @@ def load_or_create_config():
                         help='Path for the config file')
     parser.add_argument('-d', '--debug', type=str,
                         help='Path for generating debug images')
+    parser.add_argument('-s', '--show_border', action='store_true',
+                        default=False, help='Path for generating debug images')
     args = parser.parse_args()
     if args.config is not None and os.path.isfile(args.config):
         config = configparser.ConfigParser()
@@ -212,5 +223,7 @@ def load_or_create_config():
 
     if args.debug is not None:
         config_obj.debug_save_path = args.debug
+
+    config_obj.show_borders = args.show_border
 
     return config_obj

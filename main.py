@@ -40,6 +40,9 @@ class Controller:
         self.updating_flag = False
         self.hour_counter = 0
 
+        if config.show_borders:
+            self.window.show_widget_border(True)
+
     def update_calendar(self):
         self.window.calender.clear_selection()
         self.window.calender.set_month(get_month_str())
