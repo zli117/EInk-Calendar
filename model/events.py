@@ -1,4 +1,5 @@
 import datetime
+from typing import List, Tuple
 
 import dateutil.parser
 from dateutil.tz import tzlocal
@@ -7,27 +8,26 @@ from googleapiclient.discovery import build
 
 
 class GoogleCalendarEvents:
-    def __init__(self, credentials: Credentials):
+    def __init__(self, credentials: Credentials) -> None:
         self._credentials = credentials
         self._service = build('calendar', 'v3', credentials=self.credentials)
-        self._selected_calendars = []
-        self._available_calendars = [calendar[0] for calendar in
-                                     self.list_calendars()]
-        self._all_events = []
+        self._selected_calendars: List[str] = []
+        self._available_calendars: List[Tuple[str, str]] = []
+        self._all_events: List[Tuple[datetime, str]] = []
 
     @property
-    def credentials(self):
+    def credentials(self) -> Credentials:
         return self._credentials
 
     @property
-    def selected_calendars(self):
+    def selected_calendars(self) -> List[str]:
         return self._selected_calendars
 
-    def select_calendar(self, calendar_id: str):
+    def select_calendar(self, calendar_id: str) -> None:
         if calendar_id in self._available_calendars:
             self._selected_calendars.append(calendar_id)
 
-    def list_calendars(self, max_result: int = 100):
+    def list_calendars(self, max_result: int = 100) -> List[Tuple[str, str]]:
         """
         Get a list of calendars with id and summary
         :param max_result:
@@ -43,14 +43,14 @@ class GoogleCalendarEvents:
             print(exception)
         return self._available_calendars
 
-    def get_sorted_events(self, max_results=10):
+    def get_sorted_events(self, max_results=10) -> List[Tuple[datetime, str]]:
         """
         Events are sorted in time in ascending order
         :param max_results: Max amount of events to return
         :return: List of pairs. Each pair contains date of the event and text
         """
         # TODO: Handle read timeout
-        all_events = []
+        all_events: List[Tuple[datetime, str]] = []
         # 'Z' indicates UTC time
         try:
             now = datetime.datetime.utcnow().isoformat() + 'Z'
