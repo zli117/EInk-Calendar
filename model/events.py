@@ -1,5 +1,5 @@
 import datetime
-from typing import List, Tuple
+from typing import List, Set, Tuple
 
 import dateutil.parser
 from dateutil.tz import tzlocal
@@ -12,8 +12,10 @@ class GoogleCalendarEvents:
         self._credentials = credentials
         self._service = build('calendar', 'v3', credentials=self.credentials)
         self._selected_calendars: List[str] = []
-        self._available_calendars: List[Tuple[str, str]] = []
+        self._available_calendars: Set[str] = set()
         self._all_events: List[Tuple[datetime, str]] = []
+
+        self.list_calendars()
 
     @property
     def credentials(self) -> Credentials:
@@ -30,20 +32,27 @@ class GoogleCalendarEvents:
     def list_calendars(self, max_result: int = 100) -> List[Tuple[str, str]]:
         """
         Get a list of calendars with id and summary
-        :param max_result:
-        :return: List of pairs. Each pair contains id and summary
+        Args:
+            max_result: Max number of results
+
+        Returns:
+            List of pairs. Each pair contains id and summary
         """
         try:
             calendar_results = self._service.calendarList().list(
                 maxResults=max_result).execute()
             calendars = calendar_results.get('items', [])
-            self._available_calendars = [(calendar['id'], calendar['summary'])
-                                         for calendar in calendars]
+            calendar_with_id = []
+            for calendar in calendars:
+                calendar_with_id.append((calendar['id'], calendar['summary']))
+                self._available_calendars.add(calendar['id'])
+            return calendar_with_id
         except Exception as exception:
             print(exception)
-        return self._available_calendars
+        return []
 
-    def get_sorted_events(self, max_results=10) -> List[Tuple[datetime, str]]:
+    def get_sorted_events(
+            self, max_results=10) -> List[Tuple[datetime.datetime, str]]:
         """
         Events are sorted in time in ascending order
         :param max_results: Max amount of events to return
