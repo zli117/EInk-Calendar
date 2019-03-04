@@ -1,0 +1,11 @@
+language: python
+python:
+  - '3.5'
+install:
+  - pip install --upgrade pip
+  - pip install --progress-bar off -r requirements.txt
+
+script:
+#  - pytest
+  - pycodestyle --max-line-length=80 --count --statistics .
+  - mypy . --disallow-incomplete-defs
