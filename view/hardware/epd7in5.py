@@ -172,7 +172,8 @@ class EPD:
         if imwidth == self.width and imheight == self.height:
             for y in range(imheight):
                 for x in range(imwidth):
-                    # Set the bits for the column of pixels at the current position.
+                    # Set the bits for the column of pixels at the current
+                    # position.
                     if pixels[x, y] < 64:  # black
                         buf[(x + y * self.width) // 4] &= ~(0xC0 >> (x % 4 * 2))
                     elif pixels[x, y] < 192:  # convert gray to red

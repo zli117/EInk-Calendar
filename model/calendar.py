@@ -1,15 +1,15 @@
 import calendar
 import datetime
+from typing import List, Tuple
 
 
-def get_month_str():
+def get_month_str() -> str:
     return calendar.month_name[datetime.datetime.today().month]
 
 
-def get_calendar_days():
+def get_calendar_days() -> Tuple[List[int], Tuple[int, int]]:
     """
-
-    :return: list of days, the row and col of selected day (today)
+    Get calendar grid of dates as well as starting week index and weekday index
     """
     today = datetime.date.today()
     year = today.year
@@ -32,5 +32,5 @@ def get_calendar_days():
         week_idx = 0
     if len(weeks) >= 5:
         weeks = weeks[:5]
-    weeks = sum(weeks, [])
-    return list(map(lambda date: date.day, weeks)), (week_idx, weekday_idx)
+    week_list = sum(weeks, [])
+    return list(map(lambda date: date.day, week_list)), (week_idx, weekday_idx)

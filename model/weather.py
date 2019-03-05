@@ -1,34 +1,37 @@
 import datetime
+from typing import List, Tuple
 
 from pyowm import OWM
+from pyowm.weatherapi25.weather import Weather
 
 
 class OpenWeatherMapModel:
-    def __init__(self, api_key: str, city_id: int):
+    def __init__(self, api_key: str, city_id: int) -> None:
         self.owm = OWM(api_key)
         self._city_id = city_id
         self._unit = 'celsius'
-        self._current_weather = (0, 0, 0, 0, 0)
-        self._forecast = []
+        self._current_weather = (0, 0.0, 0.0, 0.0, 0.0)
+        self._forecast = []  # type:List[Tuple[int, float, float, float, float]]
 
     @property
-    def city_id(self):
+    def city_id(self) -> int:
         return self._city_id
 
     @city_id.setter
-    def city_id(self, city_id: int):
+    def city_id(self, city_id: int) -> None:
         self._city_id = city_id
 
     @property
-    def temperature_unit(self):
+    def temperature_unit(self) -> str:
         return self._unit
 
     @temperature_unit.setter
-    def temperature_unit(self, unit: str):
+    def temperature_unit(self, unit: str) -> None:
         assert unit == 'fahrenheit' or unit == 'celsius'
         self._unit = unit
 
-    def _parse_weather(self, weather):
+    def _parse_weather(self, weather: Weather) -> Tuple[int, float, float,
+                                                        float, float]:
         temperature = weather.get_temperature(unit=self.temperature_unit)
         humidity = weather.get_humidity()
         weather_code = weather.get_weather_code()
@@ -38,7 +41,7 @@ class OpenWeatherMapModel:
                 temperature.get('temp'),
                 humidity)
 
-    def get_current_weather(self):
+    def get_current_weather(self) -> Tuple[int, float, float, float, float]:
         """
         Get the current weather data
         :return: Tuple of weather code, temperature range, current temperature
@@ -52,7 +55,12 @@ class OpenWeatherMapModel:
             print(exception)
         return self._current_weather
 
-    def get_daily_forecast(self, limit=14, include_today=False):
+    def get_daily_forecast(self, limit: int = 14,
+                           include_today: bool = False) -> List[Tuple[int,
+                                                                      float,
+                                                                      float,
+                                                                      float,
+                                                                      float]]:
         """
         Get a list of forecasts
         :param limit: The max number of forecasts to get

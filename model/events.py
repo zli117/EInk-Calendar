@@ -1,4 +1,5 @@
 import datetime
+from typing import List, Set, Tuple
 
 import dateutil.parser
 from dateutil.tz import tzlocal
@@ -7,50 +8,58 @@ from googleapiclient.discovery import build
 
 
 class GoogleCalendarEvents:
-    def __init__(self, credentials: Credentials):
+    def __init__(self, credentials: Credentials) -> None:
         self._credentials = credentials
         self._service = build('calendar', 'v3', credentials=self.credentials)
-        self._selected_calendars = []
-        self._available_calendars = [calendar[0] for calendar in
-                                     self.list_calendars()]
-        self._all_events = []
+        self._selected_calendars = []  # type: List[str]
+        self._available_calendars = set()  # type: Set[str]
+        self._all_events = []  # type: List[Tuple[datetime.datetime, str]]
+
+        self.list_calendars()
 
     @property
-    def credentials(self):
+    def credentials(self) -> Credentials:
         return self._credentials
 
     @property
-    def selected_calendars(self):
+    def selected_calendars(self) -> List[str]:
         return self._selected_calendars
 
-    def select_calendar(self, calendar_id: str):
+    def select_calendar(self, calendar_id: str) -> None:
         if calendar_id in self._available_calendars:
             self._selected_calendars.append(calendar_id)
 
-    def list_calendars(self, max_result: int = 100):
+    def list_calendars(self, max_result: int = 100) -> List[Tuple[str, str]]:
         """
         Get a list of calendars with id and summary
-        :param max_result:
-        :return: List of pairs. Each pair contains id and summary
+        Args:
+            max_result: Max number of results
+
+        Returns:
+            List of pairs. Each pair contains id and summary
         """
         try:
             calendar_results = self._service.calendarList().list(
                 maxResults=max_result).execute()
             calendars = calendar_results.get('items', [])
-            self._available_calendars = [(calendar['id'], calendar['summary'])
-                                         for calendar in calendars]
+            calendar_with_id = []
+            for calendar in calendars:
+                calendar_with_id.append((calendar['id'], calendar['summary']))
+                self._available_calendars.add(calendar['id'])
+            return calendar_with_id
         except Exception as exception:
             print(exception)
-        return self._available_calendars
+        return []
 
-    def get_sorted_events(self, max_results=10):
+    def get_sorted_events(
+            self, max_results: int = 10) -> List[Tuple[datetime.datetime, str]]:
         """
         Events are sorted in time in ascending order
         :param max_results: Max amount of events to return
         :return: List of pairs. Each pair contains date of the event and text
         """
         # TODO: Handle read timeout
-        all_events = []
+        all_events = []  # type: List[Tuple[datetime.datetime, str]]
         # 'Z' indicates UTC time
         try:
             now = datetime.datetime.utcnow().isoformat() + 'Z'
