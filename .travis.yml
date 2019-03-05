@@ -6,6 +6,6 @@ install:
   - pip install --progress-bar off -r requirements.txt
 
 script:
-#  - pytest
+  - pytest
   - pycodestyle --max-line-length=80 --count --statistics .
   - mypy . --disallow-incomplete-defs
