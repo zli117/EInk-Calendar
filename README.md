@@ -1,4 +1,4 @@
-# EInk Smart Calendar
+# EInk Smart Calendar [![Build Status](https://travis-ci.com/zli117/EInk-Calendar.svg?branch=master)](https://travis-ci.com/zli117/EInk-Calendar)
 
 <img src="https://raw.githubusercontent.com/zli117/EInk-Calendar/master/image.jpg" width="600">
 
