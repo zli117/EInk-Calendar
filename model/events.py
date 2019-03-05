@@ -11,9 +11,9 @@ class GoogleCalendarEvents:
     def __init__(self, credentials: Credentials) -> None:
         self._credentials = credentials
         self._service = build('calendar', 'v3', credentials=self.credentials)
-        self._selected_calendars: List[str] = []
-        self._available_calendars: Set[str] = set()
-        self._all_events: List[Tuple[datetime, str]] = []
+        self._selected_calendars = []  # type: List[str]
+        self._available_calendars = set()  # type: Set[str]
+        self._all_events = []  # type: List[Tuple[datetime.datetime, str]]
 
         self.list_calendars()
 
@@ -52,14 +52,14 @@ class GoogleCalendarEvents:
         return []
 
     def get_sorted_events(
-            self, max_results=10) -> List[Tuple[datetime.datetime, str]]:
+            self, max_results: int = 10) -> List[Tuple[datetime.datetime, str]]:
         """
         Events are sorted in time in ascending order
         :param max_results: Max amount of events to return
         :return: List of pairs. Each pair contains date of the event and text
         """
         # TODO: Handle read timeout
-        all_events: List[Tuple[datetime, str]] = []
+        all_events = []  # type: List[Tuple[datetime.datetime, str]]
         # 'Z' indicates UTC time
         try:
             now = datetime.datetime.utcnow().isoformat() + 'Z'
