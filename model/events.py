@@ -12,8 +12,8 @@ class GoogleCalendarEvents(object):
         self._credentials = credentials
         self._service = build('calendar', 'v3', credentials=self.credentials)
         self._selected_calendars: List[str] = []
-        self._available_calendars: Set[str] = set()  
-        self._all_events: List[Tuple[datetime.datetime, str]] = []   
+        self._available_calendars: Set[str] = set()
+        self._all_events: List[Tuple[datetime.datetime, str]] = []
         self.list_calendars()
 
     @property
@@ -59,7 +59,7 @@ class GoogleCalendarEvents(object):
         :return: List of pairs. Each pair contains date of the event and text
         """
         # TODO: Handle read timeout
-        all_events: List[Tuple[datetime.datetime, str]] = []  
+        all_events: List[Tuple[datetime.datetime, str]] = []
 
         # 'Z' indicates UTC time
         try:
