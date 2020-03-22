@@ -94,7 +94,7 @@ class WidgetBase(object):
                 outline=self.foreground,
                 fill=self.background)
 
-    def add_child(self, child: WidgetBase) -> None:
+    def add_child(self, child: "WidgetBase") -> None:
         self._children.append(child)
         child.abs_col = self.abs_col + child.col
         child.abs_row = self.abs_row + child.row
