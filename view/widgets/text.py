@@ -5,7 +5,10 @@ from view.widgets.widget_base import WidgetBase
 
 
 class TextWidget(WidgetBase):
-    def __init__(self, height: int, width: int, font: ImageFont = None):
+    def __init__(self,
+                 height: int,
+                 width: int,
+                 font: ImageFont = None) -> None:
         super().__init__(height, width)
         self._text = ''
         self._font = font
@@ -13,30 +16,30 @@ class TextWidget(WidgetBase):
         self._horizontal_align = Alignments.CENTER
 
     @property
-    def text(self):
+    def text(self) -> str:
         return self._text
 
     @text.setter
-    def text(self, text: str):
+    def text(self, text: str) -> None:
         self._text = text
 
     @property
-    def vertical_alignment(self):
+    def vertical_alignment(self) -> Alignments:
         return self._vertical_align
 
     @vertical_alignment.setter
-    def vertical_alignment(self, vertical_alignment):
+    def vertical_alignment(self, vertical_alignment: Alignments) -> None:
         self._vertical_align = vertical_alignment
 
     @property
-    def horizontal_alignment(self):
+    def horizontal_alignment(self) -> Alignments:
         return self._horizontal_align
 
     @horizontal_alignment.setter
-    def horizontal_alignment(self, horizontal_alignment):
+    def horizontal_alignment(self, horizontal_alignment: Alignments) -> None:
         self._horizontal_align = horizontal_alignment
 
-    def draw(self, draw: ImageDraw):
+    def draw(self, draw: ImageDraw) -> None:
         super().draw(draw)
         font_w, font_h = draw.textsize(self._text, font=self._font)
         if font_h <= self.height and font_w <= self.width:

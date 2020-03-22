@@ -9,8 +9,8 @@ from view.widgets.weather import WeatherWidget
 from view.widgets.weather_icon_lookup import WeatherIconLookup
 
 
-class Window7in5:
-    def __init__(self, resource_dir: str):
+class Window7in5(object):
+    def __init__(self, resource_dir: str) -> None:
         font_large = ImageFont.truetype(os.path.join(
             resource_dir, 'Inconsolata-Regular.ttf'),
                                         size=27)
@@ -57,24 +57,24 @@ class Window7in5:
         self.window.abs_col = 0
         self.window.abs_row = 0
 
-    def render(self):
+    def render(self) -> Image:
         image = Image.new('1', (self.window.height, self.window.width), 255)
         draw = ImageDraw.Draw(image)
         self.window.draw(draw)
         return image
 
     @property
-    def events(self):
+    def events(self) -> EventsWidget:
         return self._events
 
     @property
-    def calender(self):
+    def calender(self) -> CalendarWidget:
         return self._calender
 
     @property
-    def weather(self):
+    def weather(self) -> WeatherWidget:
         return self._weather
 
-    def show_widget_border(self, show_border: bool):
+    def show_widget_border(self, show_border: bool) -> None:
         self.window.is_draw_border(show_border)
         self.window.is_children_draw_border(show_border)

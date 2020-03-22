@@ -1,9 +1,16 @@
+from typing import List
+
+from PIL import ImageFont
+
 from view.widgets.panel import PanelWidget
 from view.widgets.text import TextWidget
 
 
 class CalendarWidget(PanelWidget):
-    def __init__(self, height: int, width: int, font=None):
+    def __init__(self,
+                 height: int,
+                 width: int,
+                 font: ImageFont = None) -> None:
         super().__init__(height, width)
         self.font = font
         children_height = height // 7
@@ -33,18 +40,18 @@ class CalendarWidget(PanelWidget):
                 self.add_child(day_text)
                 self.date_cells.append(day_text)
 
-    def set_dates(self, dates):
+    def set_dates(self, dates: List[int]) -> None:
         assert len(dates) == 35
         for i in range(len(dates)):
             self.date_cells[i].text = str(dates[i])
 
-    def set_month(self, month: str):
+    def set_month(self, month: str) -> None:
         self.month.text = month
 
-    def set_select_date(self, row: int, col: int, selected: bool):
+    def set_select_date(self, row: int, col: int, selected: bool) -> None:
         assert 0 <= row < 5 and 0 <= col < 7
         self.date_cells[row * 7 + col].is_draw_border(selected)
 
-    def clear_selection(self):
+    def clear_selection(self) -> None:
         for date in self.date_cells:
             date.is_draw_border(False)

@@ -1,4 +1,5 @@
 from PIL import ImageFont
+from typing import List, Tuple
 
 from view.widgets.panel import PanelWidget
 from view.widgets.text import TextWidget
@@ -6,9 +7,8 @@ from view.widgets.weather_icon_lookup import WeatherIconLookup
 
 
 class ForecastWidget(PanelWidget):
-
     def __init__(self, height: int, width: int, icon_font: ImageFont,
-                 text_font: ImageFont, icon_lookup: WeatherIconLookup):
+                 text_font: ImageFont, icon_lookup: WeatherIconLookup) -> None:
         super().__init__(height, width)
 
         self.weather_icon = TextWidget(height // 2, width, font=icon_font)
@@ -31,20 +31,19 @@ class ForecastWidget(PanelWidget):
 
         self.icon_lookup = icon_lookup
 
-    def set_weather(self, id: int):
+    def set_weather(self, id: int) -> None:
         unicode = self.icon_lookup.look_up_with_owm_id(id)
         self.weather_icon.text = unicode
 
-    def set_temp_range(self, low: float, high: float):
+    def set_temp_range(self, low: float, high: float) -> None:
         self.high_temp_text.text = '%.02f' % high
         self.low_temp_text.text = '%.02f' % low
 
 
 class WeatherWidget(PanelWidget):
-
     def __init__(self, height: int, width: int, icon_font: ImageFont,
                  small_icon_font: ImageFont, text_font: ImageFont,
-                 icon_lookup: WeatherIconLookup):
+                 icon_lookup: WeatherIconLookup) -> None:
         super().__init__(height, width)
         self.icon_lookup = icon_lookup
 
@@ -80,13 +79,15 @@ class WeatherWidget(PanelWidget):
         self.humidity_icon.text = icon_lookup.look_up_with_name('wi-humidity')
         self.add_child(self.humidity_icon)
 
-        self.humidity_text = TextWidget(height // 4, width // 4, font=text_font)
+        self.humidity_text = TextWidget(height // 4,
+                                        width // 4,
+                                        font=text_font)
         self.humidity_text.row = height // 4
         self.humidity_text.col = width // 4 * 3
         self.humidity_text.text = '--'
         self.add_child(self.humidity_text)
 
-        self.forecasts = []
+        self.forecasts: List[ForecastWidget] = []
         for i in range(4):
             forecast = ForecastWidget(height // 2, width // 4, small_icon_font,
                                       text_font, icon_lookup)
@@ -95,17 +96,17 @@ class WeatherWidget(PanelWidget):
             self.add_child(forecast)
             self.forecasts.append(forecast)
 
-    def set_weather(self, id: int):
+    def set_weather(self, id: int) -> None:
         unicode = self.icon_lookup.look_up_with_owm_id(id)
         self.weather_icon.text = unicode
 
-    def set_curr_temp(self, temp: float):
+    def set_curr_temp(self, temp: float) -> None:
         self.temperature_text.text = '%.02f' % temp
 
-    def set_humidity(self, humidity: float):
+    def set_humidity(self, humidity: float) -> None:
         self.humidity_text.text = '%.02f' % humidity
 
-    def set_forecast(self, forecasts: list):
+    def set_forecast(self, forecasts: List[Tuple[int, float, float]]) -> None:
         for i, forecast in enumerate(forecasts):
             if i >= len(self.forecasts):
                 break
