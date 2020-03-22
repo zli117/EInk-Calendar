@@ -96,7 +96,6 @@ VCM_DC_SETTING = 0x82
 
 
 class EPD:
-
     def __init__(self, config):
         self.reset_pin = epdconfig.RST_PIN
         self.dc_pin = epdconfig.DC_PIN
@@ -175,9 +174,11 @@ class EPD:
                     # Set the bits for the column of pixels at the current
                     # position.
                     if pixels[x, y] < 64:  # black
-                        buf[(x + y * self.width) // 4] &= ~(0xC0 >> (x % 4 * 2))
+                        buf[(x + y * self.width) // 4] &= ~(0xC0 >>
+                                                            (x % 4 * 2))
                     elif pixels[x, y] < 192:  # convert gray to red
-                        buf[(x + y * self.width) // 4] &= ~(0xC0 >> (x % 4 * 2))
+                        buf[(x + y * self.width) // 4] &= ~(0xC0 >>
+                                                            (x % 4 * 2))
                         buf[(x + y * self.width) // 4] |= 0x40 >> (x % 4 * 2)
                     else:  # white
                         buf[(x + y * self.width) // 4] |= 0xC0 >> (x % 4 * 2)

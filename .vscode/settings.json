@@ -2,5 +2,6 @@
   "python.linting.pylintEnabled": false,
   "python.linting.mypyEnabled": true,
   "python.linting.enabled": true,
-  "python.formatting.provider": "yapf"
+  "python.formatting.provider": "yapf",
+  "python.pythonPath": "/usr/bin/python3.7"
 }

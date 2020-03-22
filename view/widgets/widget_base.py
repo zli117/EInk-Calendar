@@ -2,7 +2,6 @@ from PIL import ImageDraw
 
 
 class WidgetBase:
-
     def __init__(self, height: int, width: int):
         self._height = height
         self._width = width

@@ -5,7 +5,6 @@ from view.widgets.widget_base import WidgetBase
 
 
 class TextWidget(WidgetBase):
-
     def __init__(self, height: int, width: int, font: ImageFont = None):
         super().__init__(height, width)
         self._text = ''

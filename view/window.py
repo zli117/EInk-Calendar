@@ -10,13 +10,12 @@ from view.widgets.weather_icon_lookup import WeatherIconLookup
 
 
 class Window7in5:
-
     def __init__(self, resource_dir: str):
-        font_large = ImageFont.truetype(os.path.join(resource_dir,
-                                                     'Inconsolata-Regular.ttf'),
+        font_large = ImageFont.truetype(os.path.join(
+            resource_dir, 'Inconsolata-Regular.ttf'),
                                         size=27)
-        font_small = ImageFont.truetype(os.path.join(resource_dir,
-                                                     'Inconsolata-Regular.ttf'),
+        font_small = ImageFont.truetype(os.path.join(
+            resource_dir, 'Inconsolata-Regular.ttf'),
                                         size=14)
         font_weather_large = ImageFont.truetype(os.path.join(
             resource_dir, 'weathericons-regular-webfont.ttf'),

@@ -9,10 +9,11 @@ from model.events import GoogleCalendarEvents
 
 
 class Configurations:
-
     def __init__(self, config: ConfigParser):
         self._owm_token = config.get('API_KEYS', 'OWM', fallback='')
-        self._google_token = config.get('API_KEYS', 'Google_Token', fallback='')
+        self._google_token = config.get('API_KEYS',
+                                        'Google_Token',
+                                        fallback='')
         self._google_refresh_token = config.get('API_KEYS',
                                                 'Google_Refresh_Token',
                                                 fallback='')
@@ -229,8 +230,8 @@ def load_or_create_config():
 
         abs_path = os.path.abspath(saving_path)
         print(
-            ('Congratulations, configuration is done. The file has been saved' +
-             ' to %s. Later runs should specify the arguments:' + ' -c %s') %
+            ('Congratulations, configuration is done. The file has been saved'
+             + ' to %s. Later runs should specify the arguments:' + ' -c %s') %
             (abs_path, abs_path))
 
     if args.debug is not None:

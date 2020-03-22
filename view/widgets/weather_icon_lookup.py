@@ -2,7 +2,6 @@ import xml.etree.ElementTree as ET
 
 
 class WeatherIconLookup:
-
     def __init__(self, value_path: str):
         self.map = {}
         root = ET.parse(value_path).getroot()

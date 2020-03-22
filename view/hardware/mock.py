@@ -4,7 +4,6 @@ from utils.config_generator import Configurations
 
 
 class ButtonAndLed:
-
     def __init__(self, controller):
         pass
 
@@ -19,7 +18,6 @@ class ButtonAndLed:
 
 
 class EPD:
-
     def __init__(self, config: Configurations):
         self.save_path = config.debug_save_path
 

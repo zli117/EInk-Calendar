@@ -17,7 +17,6 @@ logger.setLevel(logging.INFO)
 
 
 class Controller:
-
     def __init__(self, config: Configurations):
         self.window = Window7in5('resources')
         self.events = GoogleCalendarEvents(config.google_credentials)
