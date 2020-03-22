@@ -9,4 +9,8 @@ install:
 script:
   - pytest
   - pycodestyle --max-line-length=80 --count --statistics .
-  - mypy . --disallow-incomplete-defs
+  - mypy main.py --disallow-incomplete-defs
+  - mypy controller.py --disallow-incomplete-defs
+  - mypy model --disallow-incomplete-defs
+  - mypy utils --disallow-incomplete-defs
+  - mypy view --disallow-incomplete-defs
