@@ -15,10 +15,10 @@ def config_no_debug():
 
 def test_config_no_debug(config_no_debug):
     assert 2 == len(config_no_debug.selected_calendars)
-    assert (config_no_debug.selected_calendars[0]
-            == config_no_debug.selected_calendars[1])
-    assert ('en.usa#holiday@group.v.calendar.google.com'
-            == config_no_debug.selected_calendars[0])
+    assert (config_no_debug.selected_calendars[0] ==
+            config_no_debug.selected_calendars[1])
+    assert ('en.usa#holiday@group.v.calendar.google.com' ==
+            config_no_debug.selected_calendars[0])
     assert 3333333 == config_no_debug.city_id
     assert 'fahrenheit' == config_no_debug.units
     assert 'owm_key' == config_no_debug.owm_token

@@ -1,6 +1,6 @@
 language: python
 python:
-  - '3.5'
+  - '3.7'
 install:
   - pip install --upgrade pip
   - pip install --progress-bar off -r requirements.txt
@@ -9,4 +9,8 @@ install:
 script:
   - pytest
   - pycodestyle --max-line-length=80 --count --statistics .
+  - mypy main.py --disallow-incomplete-defs
+  - mypy controller.py --disallow-incomplete-defs
   - mypy model --disallow-incomplete-defs
+  - mypy utils --disallow-incomplete-defs
+  - mypy view --disallow-incomplete-defs
