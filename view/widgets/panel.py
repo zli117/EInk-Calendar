@@ -4,6 +4,7 @@ from view.widgets.widget_base import WidgetBase
 
 
 class PanelWidget(WidgetBase):
+
     def __init__(self, height: int, width: int):
         super().__init__(height, width)
 

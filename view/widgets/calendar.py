@@ -3,6 +3,7 @@ from view.widgets.text import TextWidget
 
 
 class CalendarWidget(PanelWidget):
+
     def __init__(self, height: int, width: int, font=None):
         super().__init__(height, width)
         self.font = font

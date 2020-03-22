@@ -47,7 +47,6 @@
 # THE SOFTWARE.
 #
 
-
 import RPi.GPIO as GPIO
 
 from view.hardware import epdconfig
@@ -97,6 +96,7 @@ VCM_DC_SETTING = 0x82
 
 
 class EPD:
+
     def __init__(self, config):
         self.reset_pin = epdconfig.RST_PIN
         self.dc_pin = epdconfig.DC_PIN
@@ -187,16 +187,16 @@ class EPD:
                     newx = y
                     newy = self.height - x - 1
                     if pixels[x, y] < 64:  # black
-                        buf[(newx + newy * self.width) // 4] &= ~(
-                                0xC0 >> (y % 4 * 2))
+                        buf[(newx + newy * self.width) // 4] &= ~(0xC0 >>
+                                                                  (y % 4 * 2))
                     elif pixels[x, y] < 192:  # convert gray to red
-                        buf[(newx + newy * self.width) // 4] &= ~(
-                                0xC0 >> (y % 4 * 2))
-                        buf[(newx + newy * self.width) // 4] |= 0x40 >> (
-                                y % 4 * 2)
+                        buf[(newx + newy * self.width) // 4] &= ~(0xC0 >>
+                                                                  (y % 4 * 2))
+                        buf[(newx + newy * self.width) //
+                            4] |= 0x40 >> (y % 4 * 2)
                     else:  # white
-                        buf[(newx + newy * self.width) // 4] |= 0xC0 >> (
-                                y % 4 * 2)
+                        buf[(newx + newy * self.width) //
+                            4] |= 0xC0 >> (y % 4 * 2)
         return buf
 
     def display(self, image):

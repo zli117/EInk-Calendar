@@ -6,6 +6,7 @@ from view.widgets.weather_icon_lookup import WeatherIconLookup
 
 
 class ForecastWidget(PanelWidget):
+
     def __init__(self, height: int, width: int, icon_font: ImageFont,
                  text_font: ImageFont, icon_lookup: WeatherIconLookup):
         super().__init__(height, width)
@@ -40,6 +41,7 @@ class ForecastWidget(PanelWidget):
 
 
 class WeatherWidget(PanelWidget):
+
     def __init__(self, height: int, width: int, icon_font: ImageFont,
                  small_icon_font: ImageFont, text_font: ImageFont,
                  icon_lookup: WeatherIconLookup):
@@ -53,7 +55,8 @@ class WeatherWidget(PanelWidget):
         self.add_child(self.weather_icon)
 
         detail_width = width * 0.2
-        self.temperature_icon = TextWidget(height // 4, width // 4,
+        self.temperature_icon = TextWidget(height // 4,
+                                           width // 4,
                                            font=small_icon_font)
         self.temperature_icon.row = 0
         self.temperature_icon.col = width // 2
@@ -61,14 +64,16 @@ class WeatherWidget(PanelWidget):
             'wi-thermometer')
         self.add_child(self.temperature_icon)
 
-        self.temperature_text = TextWidget(height // 4, width // 4,
+        self.temperature_text = TextWidget(height // 4,
+                                           width // 4,
                                            font=text_font)
         self.temperature_text.row = 0
         self.temperature_text.col = width // 4 * 3
         self.temperature_text.text = '--'
         self.add_child(self.temperature_text)
 
-        self.humidity_icon = TextWidget(height // 4, width // 4,
+        self.humidity_icon = TextWidget(height // 4,
+                                        width // 4,
                                         font=small_icon_font)
         self.humidity_icon.row = height // 4
         self.humidity_icon.col = width // 2

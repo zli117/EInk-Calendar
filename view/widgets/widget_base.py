@@ -2,6 +2,7 @@ from PIL import ImageDraw
 
 
 class WidgetBase:
+
     def __init__(self, height: int, width: int):
         self._height = height
         self._width = width
@@ -85,10 +86,11 @@ class WidgetBase:
 
     def draw(self, draw: ImageDraw):
         if self._draw_border:
-            draw.rectangle((self.abs_col, self.abs_row,
-                            self.abs_col + self.width - 1,
-                            self.abs_row + self.height - 1),
-                           outline=self.foreground, fill=self.background)
+            draw.rectangle(
+                (self.abs_col, self.abs_row, self.abs_col + self.width - 1,
+                 self.abs_row + self.height - 1),
+                outline=self.foreground,
+                fill=self.background)
 
     def add_child(self, child):
         self._children.append(child)

@@ -5,6 +5,7 @@ from view.widgets.widget_base import WidgetBase
 
 
 class TextWidget(WidgetBase):
+
     def __init__(self, height: int, width: int, font: ImageFont = None):
         super().__init__(height, width)
         self._text = ''
@@ -50,5 +51,7 @@ class TextWidget(WidgetBase):
                 vertical_offset += (self.height - font_h) // 2 - 1
             elif self._vertical_align == Alignments.BOTTOM:
                 vertical_offset += self.height - font_h
-            draw.text((horizontal_offset, vertical_offset), self.text,
-                      fill=self.foreground, font=self._font)
+            draw.text((horizontal_offset, vertical_offset),
+                      self.text,
+                      fill=self.foreground,
+                      font=self._font)

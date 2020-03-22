@@ -7,6 +7,7 @@ logger = logging.getLogger('EInkUI')
 
 
 class ButtonAndLed:
+
     def __init__(self, controller, button_gpio=26, led_gpio=21):
         self.button_gpio = button_gpio
         self.controller = controller
@@ -16,6 +17,7 @@ class ButtonAndLed:
         self.led_gpio = led_gpio
 
         def call_back(channel):
+
             def new_thread():
                 self.controller.update_and_redraw()
                 logger.info('Update of the screen due to button event')
@@ -23,7 +25,9 @@ class ButtonAndLed:
             thread = threading.Thread(target=new_thread)
             thread.start()
 
-        GPIO.add_event_detect(button_gpio, GPIO.FALLING, callback=call_back,
+        GPIO.add_event_detect(button_gpio,
+                              GPIO.FALLING,
+                              callback=call_back,
                               bouncetime=500)
         self.led_off()
 

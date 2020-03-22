@@ -9,13 +9,15 @@ from model.events import GoogleCalendarEvents
 
 
 class Configurations:
+
     def __init__(self, config: ConfigParser):
         self._owm_token = config.get('API_KEYS', 'OWM', fallback='')
         self._google_token = config.get('API_KEYS', 'Google_Token', fallback='')
         self._google_refresh_token = config.get('API_KEYS',
                                                 'Google_Refresh_Token',
                                                 fallback='')
-        self._google_client_id = config.get('API_KEYS', 'Google_Client_Id',
+        self._google_client_id = config.get('API_KEYS',
+                                            'Google_Client_Id',
                                             fallback='')
         self._google_client_secrete = config.get('API_KEYS',
                                                  'Google_Client_Secrete',
@@ -24,7 +26,8 @@ class Configurations:
         self._units = config.get('CONFIG', 'Units', fallback='celsius')
         self._city_id = config.getint('CONFIG', 'City_Id', fallback=0)
         self._selected_calendars = []
-        selected_calendars = config.get('CONFIG', 'Selected_Calendars',
+        selected_calendars = config.get('CONFIG',
+                                        'Selected_Calendars',
                                         fallback='')
         for calendar_id in map(lambda s: s.strip(),
                                selected_calendars.split(',')):
@@ -148,12 +151,19 @@ class Configurations:
 
 def load_or_create_config():
     parser = argparse.ArgumentParser('EInk Smart Calendar')
-    parser.add_argument('-c', '--config', type=str,
+    parser.add_argument('-c',
+                        '--config',
+                        type=str,
                         help='Path for the config file')
-    parser.add_argument('-d', '--debug', type=str,
+    parser.add_argument('-d',
+                        '--debug',
+                        type=str,
                         help='Path for generating debug images')
-    parser.add_argument('-s', '--show_border', action='store_true',
-                        default=False, help='Path for generating debug images')
+    parser.add_argument('-s',
+                        '--show_border',
+                        action='store_true',
+                        default=False,
+                        help='Path for generating debug images')
     args = parser.parse_args()
     if args.config is not None and os.path.isfile(args.config):
         config = configparser.ConfigParser()
@@ -164,8 +174,8 @@ def load_or_create_config():
     else:
         config_obj = Configurations(configparser.ConfigParser())
         config_obj.owm_token = input('Paste in the Open Weather Map Token: \n')
-        print('To generate Google API tokens, see the video'
-              + ' https://www.youtube.com/watch?v=hfWe1gPCnzc')
+        print('To generate Google API tokens, see the video' +
+              ' https://www.youtube.com/watch?v=hfWe1gPCnzc')
         config_obj.google_token = input('Paste in the Access Token: \n')
         config_obj.google_refresh_token = input(
             'Paste in the Refresh Token: \n')
@@ -180,8 +190,8 @@ def load_or_create_config():
         for i in range(len(list_calendars)):
             print('%d) %s' % (i, list_calendars[i][1]))
         selected_calendars = []
-        prompt = ('Select one or more calendars by listing out'
-                  + ' their index. Separated by \',\'\n')
+        prompt = ('Select one or more calendars by listing out' +
+                  ' their index. Separated by \',\'\n')
         while True:
             selections = input(prompt)
             selections = map(lambda s: int(s.strip()), selections.split(','))
@@ -197,12 +207,13 @@ def load_or_create_config():
         for selected_calendar in selected_calendars:
             config_obj.add_selected_calendars(selected_calendar)
 
-        city_id = int(input('Paste in the city id for retrieving weather.'
-                            + ' The city id could be found on Open Weather'
-                            + ' Map website: \n'))
+        city_id = int(
+            input('Paste in the city id for retrieving weather.' +
+                  ' The city id could be found on Open Weather' +
+                  ' Map website: \n'))
         config_obj.city_id = city_id
-        prompt = ('Now select the unit for temperature.'
-                  + ' Either "fahrenheit" or "celsius" \n')
+        prompt = ('Now select the unit for temperature.' +
+                  ' Either "fahrenheit" or "celsius" \n')
         while True:
             units = input(prompt)
             if units != 'fahrenheit' and units != 'celsius':
@@ -217,9 +228,10 @@ def load_or_create_config():
         config_obj.save(saving_path)
 
         abs_path = os.path.abspath(saving_path)
-        print(('Congratulations, configuration is done. The file has been saved'
-               + ' to %s. Later runs should specify the arguments:'
-               + ' -c %s') % (abs_path, abs_path))
+        print(
+            ('Congratulations, configuration is done. The file has been saved' +
+             ' to %s. Later runs should specify the arguments:' + ' -c %s') %
+            (abs_path, abs_path))
 
     if args.debug is not None:
         config_obj.debug_save_path = args.debug

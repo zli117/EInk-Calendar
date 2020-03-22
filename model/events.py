@@ -8,6 +8,7 @@ from googleapiclient.discovery import build
 
 
 class GoogleCalendarEvents:
+
     def __init__(self, credentials: Credentials) -> None:
         self._credentials = credentials
         self._service = build('calendar', 'v3', credentials=self.credentials)
@@ -51,8 +52,9 @@ class GoogleCalendarEvents:
             print(exception)
         return []
 
-    def get_sorted_events(
-            self, max_results: int = 10) -> List[Tuple[datetime.datetime, str]]:
+    def get_sorted_events(self,
+                          max_results: int = 10
+                         ) -> List[Tuple[datetime.datetime, str]]:
         """
         Events are sorted in time in ascending order
         :param max_results: Max amount of events to return
