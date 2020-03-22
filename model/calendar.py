@@ -15,10 +15,12 @@ def get_calendar_days() -> Tuple[List[int], Tuple[int, int]]:
     year = today.year
     month = today.month
     weekday_idx = (today.weekday() + 1) % 7
+
     # week start on Sunday
     calendar_lib = calendar.Calendar(firstweekday=6)
-    weeks = calendar_lib.monthdatescalendar(year, month)
-    week_idx = 0
+    weeks: List[List[datetime.date]] = calendar_lib.monthdatescalendar(
+        year, month)
+    week_idx: int = 0
     for week in weeks:
         if week[weekday_idx] == today:
             break
@@ -32,5 +34,5 @@ def get_calendar_days() -> Tuple[List[int], Tuple[int, int]]:
         week_idx = 0
     if len(weeks) >= 5:
         weeks = weeks[:5]
-    week_list = sum(weeks, [])
+    week_list: List[datetime.date] = sum(weeks, [])
     return list(map(lambda date: date.day, week_list)), (week_idx, weekday_idx)

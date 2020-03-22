@@ -33,7 +33,6 @@
 # THE SOFTWARE.
 #
 
-
 import time
 
 import RPi.GPIO as GPIO
