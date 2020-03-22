@@ -17,6 +17,21 @@ manual update with a press of button.
  * 330 Ohm resistor
  * Breadboard
  
+## Enable SPI Mode.
+To Enable, pass following command 
+
+`sudo raspi-config
+`
+Select **Interfacing Options**
+Select **P4 SPI**
+Select **Yes** when asked **Would you like the SPI interface to be enabled?**
+It will prompt The SPI interface is enabled, press ok
+Select **Finish** to exit raspi-config
+
+## Install required packages
+`sudo apt install libopenjp2-7 libtiff5
+`
+ 
 ### Then clone this repo and install the dependencies
 ```bash
 pip install -r requirements.txt
