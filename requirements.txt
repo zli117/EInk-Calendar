@@ -4,4 +4,4 @@ oauth2client==4.1.3
 python-dateutil==2.8.1
 RPi.GPIO==0.7.0
 spidev==3.4
-Pillow==7.0.0
+Pillow==8.1.1
