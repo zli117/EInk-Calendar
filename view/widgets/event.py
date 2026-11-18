@@ -40,7 +40,7 @@ class EventWidget(PanelWidget):
                    bottom_pad, self.abs_col + self.width - horizontal_pad,
                    self.abs_row + self.height - bottom_pad),
                   fill=self.foreground)
-        text_w, text_h = self.font.getsize(' ')
+        _, _, text_w, text_h = self.font.getbbox(' ')
         # How many character's size the tab will take
         tab_width_char = 14
         polygon_pts = ((self.abs_col + horizontal_pad,
