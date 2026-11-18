@@ -41,7 +41,8 @@ class TextWidget(WidgetBase):
 
     def draw(self, draw: ImageDraw) -> None:
         super().draw(draw)
-        font_w, font_h = draw.textsize(self._text, font=self._font)
+        _, _, font_w, font_h = draw.textbbox((0, 0), self._text,
+                                             font=self._font)
         if font_h <= self.height and font_w <= self.width:
             horizontal_offset = self.abs_col
             if self._horizontal_align == Alignments.CENTER:
